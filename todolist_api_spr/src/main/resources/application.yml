@@ -1,0 +1,52 @@
+
+
+
+# WAS server setting
+server:
+  port: 8088
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    session:
+      timeout: 3600                              # ???? : ?
+
+  tomcat:
+    uri-encoding: UTF-8                         # Spring Default : UTF-8
+
+spring:
+  profiles:
+    active: local                               # local, test, prod ? ???? ????? ??? ?? ???..?
+
+  security:
+    user:
+      name: user
+      password: 1111                            # Spring Security Default password ??
+
+  thymeleaf:
+    cache: false
+
+  # JSP ??? ??.
+  #  mvc:
+  #    view:
+  #      prefix: /WEB-INF/jsp/                                   # View Resolver setting
+  #      suffix: .jsp
+
+  datasource:
+    url: jdbc:mariadb://125.133.48.203:52099/todolistdb
+    username: heatmaster
+    password: rpn123!!
+    hikari:
+      idle-timeout: 10000
+      maximum-pool-size: 10
+      minimum-idle: 5
+      pool-name: BaseHikariPool
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    cache-enabled: true
+    call-setters-on-nulls: true
+    default-statement-timeout: 500
+  type-aliases-package: com.example.todolist_api_spr.vo

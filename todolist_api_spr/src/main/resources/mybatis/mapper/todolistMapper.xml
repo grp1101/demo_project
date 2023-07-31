@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todolistMapper">
+
+<!--    <resultMap type="vo.TodolistVo" id="boardMap">-->
+<!--        <id property="bno" column="bno"></id>-->
+<!--        <result property="title" column="title"/>-->
+<!--        <result property="content" column="content"/>-->
+<!--        <result property="writer" column="writer"/>-->
+<!--        <result property="regDate" column="regDate"/>-->
+<!--    </resultMap>-->
+
+    <select id="findAll" resultType="map">
+        SELECT *
+        FROM todo;
+    </select>
+
+        <insert id = "saveTodo" parameterType="todolistVo">
+            INSERT INTO todo( complete ,content , checked)
+            VALUES ( 1 ,#{content} , #{checked});
+            <selectKey keyProperty="todo_seq"  resultType="int" order="AFTER">
+                select LAST_INSERT_ID()
+            </selectKey>
+        </insert>
+
+
+<!--    <select id="findOne" resultType="com.codepresso.blog.vo.Post">-->
+<!--        SELECT *-->
+<!--        FROM POST WHERE ID = ${id}-->
+<!--    </select>-->
+
+    <delete id="deleteTodo" parameterType="hashMap">
+        DELETE FROM todo WHERE todo_seq = ${todo_seq}
+    </delete>
+
+    <update id="updateTodo" parameterType="com.example.todolist_api_spr.vo.todolistVo">
+        UPDATE todo SET content = #{content},
+                        checked = #{checked}
+        WHERE todo_seq = #{todo_seq}
+    </update>
+
+    <delete id="AlldeleteTodo">
+        DELETE FROM todo;
+    </delete>
+
+
+</mapper>
