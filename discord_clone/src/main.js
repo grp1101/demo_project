@@ -3,7 +3,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './routers'
 import { library } from '@fortawesome/fontawesome-svg-core';
-import VueQRCodeComponent from 'vue-qrcode-component'
+import VueQRCodeComponent from 'vue-qrcode-component';
+import axios from 'axios';
 
 /* import specific icons  원하는 아이콘을 하나씩 import 해야함..*/
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
@@ -36,11 +37,7 @@ vue.use(BootstrapVue);
 // const router1 = useRouter();
 // vue.config.globalProperties.$router1 = router1;
 
+//axios 전역 설정
+vue.config.globalProperties.axios   = axios;
+
 vue.use(router).mount('#app');
-
-
-
-
-
-// const app =createApp(App);
-// app.mount('#app');

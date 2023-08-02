@@ -65,6 +65,10 @@ Discord
       <!-- <router-link to="/">Login</router-link><router-view /> -->
       Login
   </button>
+  <button type="button" class="btn" v-on:click="signUp()" style="background-color: #FFFFFF; border-radius: 20px;">
+      <!-- <router-link to="/">Login</router-link><router-view /> -->
+      회원가입
+  </button>
 </nav>
 <br>
 <br>
@@ -94,7 +98,11 @@ methods: {
 console.log("header-content login method 실행");
 // this.$("#login_page_link").Click(); //this가 없으면 빌드하는데 오류남. this.가 있으면 제이쿼리가 안먹힘...vue 사이에선 사용할 수 없는가범
 // this.$emit("loginClick"); //app.vue와 부모자식의 관계가 아님..
-this.$router.push('/login'); //router-view가 어느 컴포넌트에 있든지 간에 상관없이 표시되는 것 같음
+this.$router.push('/login_page'); //router-view가 어느 컴포넌트에 있든지 간에 상관없이 표시되는 것 같음
+},
+signUp(){
+  console.log("header-contetn sign up method 실행");
+  this.$router.push('/signup_page');
 }
 },
 }

@@ -16,9 +16,14 @@ name: "about",
 component: () => import("../views/AboutView.vue"),
 },
 {
-path: "/login",
+path: "/login_page",
 name: "login",
 component: () => import("../login-page.vue"),
+},
+{
+path: "/signup_page",
+name: "signup",
+component: () => import("../signup-page.vue"),
 },
 ];
 
