@@ -5,9 +5,9 @@
     <!-- 회원가입 -->
     <insert id="insertUser">
         INSERT INTO User
-            (name, username, email, password, address, phone)
+            (id, username, email, password, address, phone)
         VALUES
-            (#{name}, #{username}, #{email}, #{password}, #{address}, #{phone})
+            (#{id}, #{username}, #{email}, #{password}, #{address}, #{phone})
     </insert>
 
 

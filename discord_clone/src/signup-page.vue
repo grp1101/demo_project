@@ -2,7 +2,7 @@
 <div>
     <h2>회원가입</h2>
         <div>
-            <input type="text" v-model="name" placeholder="Name"/>
+            <input type="text" v-model="id" placeholder="id"/>
         </div>
         <div>
             <input type="text" v-model="username" placeholder="*Username"/>
@@ -39,7 +39,7 @@ export default {
   },
     data() {
      return {
-      name:'',
+      id:'',
       username:'',
       email:'',
       password:'',

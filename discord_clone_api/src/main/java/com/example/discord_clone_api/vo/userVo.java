@@ -23,22 +23,6 @@ public class UserVo {
     private String company;
 
 
-    public UserVo() {
-    };
-
-    public UserVo(int user_seq, String id, String name, String username, String email, String password, String address, String phone, String website, String company) {
-        this.user_seq = user_seq;
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.address = address;
-        this.phone = phone;
-        this.website = website;
-        this.company = company;
-    }
-
     public int getUser_seq() {
         return user_seq;
     }

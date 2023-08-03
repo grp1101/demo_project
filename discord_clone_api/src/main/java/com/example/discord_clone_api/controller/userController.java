@@ -17,6 +17,8 @@ public class UserController {
     /*회원가입 저장*/
     @PostMapping("/signup")
     public String signup(UserVo userVo) { // 회원 가입
+
+        System.out.println("/signup 실행됨");
         try {
             userService.signup(userVo);
         } catch (DuplicateKeyException e) {
