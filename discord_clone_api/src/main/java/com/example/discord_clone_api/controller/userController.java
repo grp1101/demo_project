@@ -27,7 +27,7 @@ public class UserController {
             e.printStackTrace();
             return "redirect:/signup?error_code=-99";
         }
-        return "redirect:/login";
+        return "1";
     }
 
 }

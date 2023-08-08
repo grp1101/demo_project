@@ -54,7 +54,7 @@ export default {
     sign_up_input(){
 
         // api용 post 함수
-                this.axios({
+          this.axios({
           method: 'post',
           url: '/api/signup',
           data: {

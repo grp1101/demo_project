@@ -11,16 +11,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserVo {
 
-    private int user_seq;
-    private String id;
-    private String name;
-    private String username;
-    private String email;
-    private String password;
-    private String address;
-    private String phone;
-    private String website;
-    private String company;
+    public int user_seq;
+    public String id;
+    public String name;
+    public String username;
+    public String email;
+    public String password;
+    public String address;
+    public String phone;
+    public String website;
+    public String company;
 
 
     public int getUser_seq() {

@@ -23,7 +23,7 @@ public class SecurityConfig {
         // /login, /signup 페이지는 모두 허용, 다른 페이지는 인증된 사용자만 허용
         http
                 .authorizeRequests()
-                .antMatchers("/login", "/signup").permitAll()
+                .antMatchers("/signup","/login","/api/**", "/signup_page").permitAll()
                 .anyRequest().authenticated();
 
         // login 설정
