@@ -1,4 +1,4 @@
-package com.example.discord_clone_api.vo;
+package com.example.discord_clone_api_not_sec.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

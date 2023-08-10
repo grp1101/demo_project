@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.discord_clone_api.repository.UserMapper">
+<mapper namespace="UserMapper">
 
     <!-- 회원가입 -->
-    <insert id="insertUser">
-        INSERT INTO User
+    <insert id="insertUser" parameterType="com.example.discord_clone_api_not_sec.vo.UserVo">
+        INSERT INTO user
             (id, username, email, password, address, phone)
         VALUES
             (#{id}, #{username}, #{email}, #{password}, #{address}, #{phone})
@@ -12,7 +12,7 @@
 
 
     <!-- 회원 정보 가져오기 -->
-    <select id="getUserByEmail" resultType="com.example.discord_clone_api.vo.UserVo">
+    <select id="getUserByEmail" resultType="UserVo">
         SELECT *
         FROM User
         WHERE email = #{email}

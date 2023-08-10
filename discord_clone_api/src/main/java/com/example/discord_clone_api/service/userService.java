@@ -32,9 +32,9 @@ public class UserService {
     };
 
     /*회원정보 가져오기*/
-    public UserVo getUserByEmail(String email) {
-        return userMapper.getUserByEmail(email);
-    }
+//    public UserVo getUserByEmail(String email) {
+//        return userMapper.getUserByEmail(email);
+//    }
 
 
 }

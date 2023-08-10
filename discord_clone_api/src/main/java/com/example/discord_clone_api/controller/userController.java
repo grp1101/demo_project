@@ -16,16 +16,13 @@ public class UserController {
 
     /*회원가입 저장*/
     @PostMapping("/signup")
-    public String signup(UserVo userVo) { // 회원 가입
+    public String signup(@RequestBody UserVo userVo) { // 회원 가입
 
         System.out.println("/signup 실행됨");
         try {
             userService.signup(userVo);
-        } catch (DuplicateKeyException e) {
-            return "redirect:/signup?error_code=-1";
         } catch (Exception e) {
-            e.printStackTrace();
-            return "redirect:/signup?error_code=-99";
+            System.out.println("error: "+e);
         }
         return "1";
     }

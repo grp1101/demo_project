@@ -1,6 +1,6 @@
-package com.example.discord_clone_api.repository;
+package com.example.discord_clone_api_not_sec.repository;
 
-import com.example.discord_clone_api.vo.UserVo;
+import com.example.discord_clone_api_not_sec.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +19,9 @@ public class UserMapper {
     }
 
     /*회원정보 가져오기*/
-//    UserVo getUserByEmail(String email); // 회원 정보 가져오기
+//    public UserVo getUserByEmail(String email) //
+//    {
+//        return null;
+//    }
 
 }

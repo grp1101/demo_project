@@ -58,7 +58,7 @@ export default {
           method: 'post',
           url: '/api/signup',
           data: {
-            "name":this.name,
+            "id":this.id,
             "username":this.username,
             "email":this.email,
             "password":this.password,
@@ -70,6 +70,12 @@ export default {
           console.log("response.data = " , response.data);
         //   this.$emit("addTodoList", response.data);
         //   this.content='';
+
+
+        //not_sec용
+        if(response.data == 1){
+          this.$router.push('/');
+        }
         }).catch(err => alert(err))
         .finally(() => {
           console.log("/api/signup 실행");
