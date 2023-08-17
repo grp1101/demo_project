@@ -32,7 +32,7 @@ spring:
   #      suffix: .jsp
 
   datasource:
-    url: jdbc:mariadb://125.133.48.203:52099/userdb
+    url: jdbc:mariadb://125.133.48.203:52099/todolistdb
     username: heatmaster
     password: rpn123!!
     hikari:

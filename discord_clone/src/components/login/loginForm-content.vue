@@ -26,7 +26,7 @@
               <label>
                   <input type="password" placeholder="password" v-model="password">
               </label>
-              <b-btn variant="success" type="submit">Login</b-btn>
+              <b-btn variant="success" type="submit" v-on:click="login(user ,password)">Login</b-btn>
               <p v-if="error" class="error">Bad login information</p>
           </form>
       </div>
@@ -125,27 +125,45 @@ export default {
 
   },
   methods: {
-    login(){
-      // api용 post 함수
-          this.axios({
-          method: 'post',
-          url: '/api/login',
-          auth: {
-                              username: this.user,
-                              password: this.password
-          },
-  }, { withCredentials : true })
-        .then((response) => {
-          console.log("response.data = " , response.data);
-          this.loginSuccess = true
-        })
-        .catch(err => {
-        this.loginError = true;
-        throw new Error(err)
-        })
-        .finally(() => {
-          console.log("/api/login 실행");
-        }); 
+    async login(user ,password ){
+                  try {
+                      const result = await this.axios.get('/api/login', {
+                          auth: {
+                              username: user,
+                              password: password
+                          }
+                      });
+                      if (result.status === 200) {
+                          this.loginSuccess = true
+                      }
+                  } catch (err) {
+                      this.loginError = true;
+                      console.log("err내용 : "+err);
+                      // throw new Error(err)
+                  }
+
+
+
+  //     // api용 post 함수
+  //         this.axios({
+  //         method: 'get',
+  //         url: '/api/login',
+  //         auth: {
+  //                             username: this.user,
+  //                             password: this.password
+  //         },
+  // }, { withCredentials : true })
+  //       .then((response) => {
+  //         console.log("response.data = " , response.data);
+  //         this.loginSuccess = true
+  //       })
+  //       .catch(err => {
+  //       this.loginError = true;
+  //       throw new Error(err)
+  //       })
+  //       .finally(() => {
+  //         console.log("/api/login 실행");
+  //       }); 
   },
 }
 }

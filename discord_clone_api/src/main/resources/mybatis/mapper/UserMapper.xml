@@ -12,7 +12,7 @@
 
 
     <!-- 회원 정보 가져오기 -->
-    <select id="getUserByEmail" resultType="UserVo">
+    <select id="getUserByEmail" resultType="com.example.discord_clone_api_not_sec.vo.UserVo">
         SELECT *
         FROM User
         WHERE email = #{email}

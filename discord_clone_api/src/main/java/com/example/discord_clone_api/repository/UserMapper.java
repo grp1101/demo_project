@@ -19,6 +19,8 @@ public class UserMapper {
     }
 
     /*회원정보 가져오기*/
-//    UserVo getUserByEmail(String email); // 회원 정보 가져오기
+    public UserVo getUserByEmail(String email){// 회원 정보 가져오기
+        return session.selectOne("UserMapper.getUserByEmail" , email);
+    }
 
 }
