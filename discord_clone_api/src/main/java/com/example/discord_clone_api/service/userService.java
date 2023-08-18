@@ -18,15 +18,21 @@ public class UserService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     /*회원가입 저장*/
-    public void signup(UserVo userVo) { // 회원 가입
-        if (!userVo.getUsername().equals("") && !userVo.getEmail().equals("")) {
-            // password는 암호화해서 DB에 저장
-            userVo.setPassword(passwordEncoder.encode(userVo.getPassword()));
-            userMapper.insertUser(userVo);
-        }
-    };
+    public int signup(UserVo userVo) { // 회원 가입
 
-    /*비밀번호 암호화?....*/
+        int insertCNT = 0;
+
+        if (!userVo.getUsername().equals("") && !userVo.getEmail().equals("")) {
+            // password 암호화
+            userVo.setPassword(passwordEncoder.encode(userVo.getPassword()));
+
+            insertCNT = userMapper.insertUser(userVo);
+        }
+
+        return insertCNT;
+    }
+
+    /*password 암호화*/
     public PasswordEncoder passwordEncoder() {
         return this.passwordEncoder;
     };

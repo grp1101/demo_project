@@ -20,6 +20,7 @@ public class UserVo {
     public String phone;
     public String website;
     public String company;
+    public int result;
 
 
     public int getUser_seq() {
@@ -92,5 +93,13 @@ public class UserVo {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 }

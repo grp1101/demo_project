@@ -16,15 +16,27 @@ public class UserController {
 
     /*회원가입 저장*/
     @PostMapping("/signup")
-    public String signup(@RequestBody UserVo userVo) { // 회원 가입
+    public UserVo signup(@RequestBody UserVo userVo) { // 회원 가입
 
         System.out.println("/signup 실행됨");
+
+        int result = 0;
+
         try {
-            userService.signup(userVo);
+
+            result= userService.signup(userVo);
+
+            if(result > 0){
+                userVo.setResult(1);
+            }else{
+                userVo.setResult(0);
+            }
+
         } catch (Exception e) {
             System.out.println("error: "+e);
         }
-        return "1";
+
+        return userVo;
     }
 
 }
