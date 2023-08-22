@@ -1,7 +1,7 @@
 <template>
 <div class='loginForm_content_background'>
 
-      <div class="protected" v-if="loginSuccess">
+      <!-- <div class="protected" v-if="loginSuccess">
           <h1>
               <b-badge variant="success">보안 사이트에 대한 액세스가 허용되었습니다</b-badge>
           </h1>
@@ -26,28 +26,28 @@
               <label>
                   <input type="password" placeholder="password" v-model="password">
               </label>
-              <b-btn variant="success" type="submit" v-on:click="login(user ,password)">Login</b-btn>
+              <b-btn variant="success" type="submit" v-on:click="login_example2(user ,password)">Login</b-btn>
               <p v-if="error" class="error">Bad login information</p>
           </form>
-      </div>
+      </div> -->
 
 
 
 
 <!-- 나중에 밑에 코드로 바꾸기 -->
 <div id='loginForm_content_detail'>
-<!-- <form> -->
+<form>
   
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example1">이메일 또는 전화번호</label>
-    <input type="email" id="form2Example1" class="form-control" />
+    <label class="form-label" for="email">이메일 또는 전화번호</label>
+    <input type="email" v-model="email" class="form-control" />
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <label class="form-label" for="form2Example2">비밀번호</label>
-    <input type="password" id="form2Example2" class="form-control" />
+    <label class="form-label" for="password">비밀번호</label>
+    <input type="password" v-model="password" class="form-control" />
   </div>
 
   <!-- 2 column grid layout for inline styling -->
@@ -68,7 +68,7 @@
   </div>
 
   <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4">로그인</button>
+  <button type="button" class="btn btn-primary btn-block mb-4" v-on:click="login(email ,password)">로그인</button>
 
   <!-- Register buttons -->
   <div class="text-center">
@@ -102,7 +102,7 @@
     <img :src="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8'" >
     <div>QR코드로 로그인</div>
 </div>
-<!-- </form> -->
+</form>
 
 </div>
 </div>
@@ -117,6 +117,7 @@ export default {
                   loginSuccess: false,
                   loginError: false,
                   user: '',
+                  email: '',
                   password: '',
                   error: false
     }
@@ -125,7 +126,24 @@ export default {
 
   },
   methods: {
-    async login(user ,password ){
+        async login(email ,password ){
+          this.axios({
+          method: 'post',
+          url: '/api/login',
+          data: {
+                              email: email,
+                              password: password
+          },
+  }, { withCredentials : true })
+        .then((response) => {
+          console.log("response.data = " , response.data);
+          console.log("/api/login 로그인 성공");
+        })
+        .finally(() => {
+          console.log("/api/login 실행");
+        }); 
+  },
+    async login_example2(user ,password ){
                   try {
                       const result = await this.axios.get('/api/login', {
                           auth: {

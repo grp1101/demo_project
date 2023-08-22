@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("UserMapper")
 public class UserMapper {
 
@@ -13,14 +15,18 @@ public class UserMapper {
     SqlSession session;
 
     /*회원가입 저장*/
-    public int insertUser(UserVo userVo) // 회원 가입
-    {
+    public int insertUser(UserVo userVo) {
         return session.insert("UserMapper.insertUser" , userVo);
     }
 
-    /*회원정보 가져오기*/
-    public UserVo getUserByEmail(String email){// 회원 정보 가져오기
+    /*개인정보 가져오기*/
+    public UserVo getUserByEmail(String email){
         return session.selectOne("UserMapper.getUserByEmail" , email);
+    }
+
+    /*User 테이블 가져오기*/
+    public List<UserVo> getUserList(){
+        return session.selectList("UserMapper.getUserList");
     }
 
 }

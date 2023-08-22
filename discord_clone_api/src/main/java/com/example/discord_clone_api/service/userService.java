@@ -37,9 +37,14 @@ public class UserService {
         return this.passwordEncoder;
     };
 
-    /*회원정보 가져오기*/
+    /*개인정보 가져오기*/
     public UserVo getUserByEmail(String email) {
         return userMapper.getUserByEmail(email);
+    }
+
+    /*User 테이블 가져오기*/
+    public List<UserVo> getUserList() {
+        return userMapper.getUserList();
     }
 
 

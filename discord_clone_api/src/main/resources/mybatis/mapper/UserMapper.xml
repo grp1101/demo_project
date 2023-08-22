@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserMapper">
 
-    <!-- 회원가입 -->
+    <!-- 회원가입 저장 -->
     <insert id="insertUser" parameterType="UserVo">
         INSERT INTO user
             (id, username, email, password, address, phone, website, company, reg_date)
@@ -11,11 +11,17 @@
     </insert>
 
 
-    <!-- 회원 정보 가져오기 -->
+    <!-- 개인정보 가져오기 -->
     <select id="getUserByEmail" resultType="UserVo">
         SELECT *
         FROM User
         WHERE email = #{email}
+    </select>
+
+    <!-- User 테이블 가져오기 -->
+    <select id="getUserList" resultType="UserVo">
+        SELECT *
+        FROM User
     </select>
 
 </mapper>
