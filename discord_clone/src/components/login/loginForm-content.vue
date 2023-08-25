@@ -127,21 +127,51 @@ export default {
   },
   methods: {
         async login(email ,password ){
-          this.axios({
-          method: 'post',
-          url: '/api/login',
-          data: {
-                              email: email,
-                              password: password
-          },
-  }, { withCredentials : true })
-        .then((response) => {
-          console.log("response.data = " , response.data);
-          console.log("/api/login 로그인 성공");
-        })
-        .finally(() => {
-          console.log("/api/login 실행");
-        }); 
+
+const loginData= new FormData();
+
+loginData.append("email" , email);
+loginData.append("password" , password);
+
+
+                  try {
+                      const result = await this.axios.post('/api/login', loginData,{
+Headers:{
+  'Context-Type':'multipart/form-data'
+}
+                      });
+                      if (result.status === 200) {
+                          // this.loginSuccess = true
+                          alert("로그인 성공");
+                      }else{
+alert("로그인 실패");
+                      }
+                  } catch (err) {
+                      // this.loginError = true;
+                      console.log("err내용 : "+err);
+                  }
+
+
+
+  //         this.axios({
+  //         method: 'post',
+  //         url: '/api/login',
+  //         // data: {
+  //         //                     email: email,
+  //         //                     password: password
+  //         // },
+  //         //           auth: {
+  //         //                     email: email,
+  //         //                     password: password
+  //         // },
+  // }, { withCredentials : true })
+  //       .then((response) => {
+  //         console.log("response.data = " , response.data);
+  //         console.log("/api/login 로그인 성공");
+  //       })
+  //       .finally(() => {
+  //         console.log("/api/login 실행");
+  //       }); 
   },
     async login_example2(user ,password ){
                   try {
@@ -159,29 +189,6 @@ export default {
                       console.log("err내용 : "+err);
                       // throw new Error(err)
                   }
-
-
-
-  //     // api용 post 함수
-  //         this.axios({
-  //         method: 'get',
-  //         url: '/api/login',
-  //         auth: {
-  //                             username: this.user,
-  //                             password: this.password
-  //         },
-  // }, { withCredentials : true })
-  //       .then((response) => {
-  //         console.log("response.data = " , response.data);
-  //         this.loginSuccess = true
-  //       })
-  //       .catch(err => {
-  //       this.loginError = true;
-  //       throw new Error(err)
-  //       })
-  //       .finally(() => {
-  //         console.log("/api/login 실행");
-  //       }); 
   },
 }
 }
