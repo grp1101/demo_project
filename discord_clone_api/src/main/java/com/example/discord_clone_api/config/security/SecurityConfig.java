@@ -38,8 +38,8 @@ public class SecurityConfig {
 //                .loginPage("/login_page")    // GET 요청 (login form을 보여줌) //나는 이거 넣으면 get요청 : 500 오류남
                 .loginProcessingUrl("/api/login")    // 사용자 이름과 암호를 제출할 URL . POST 요청 (login 창에 입력한 데이터를 처리). 예제는 form에서 넘기는 방식인데 vue의 date로 요청을 받을 수 있을지...
                 .usernameParameter("email")	// login에 필요한 id 값을 email로 설정 (default는 username)
-                .passwordParameter("password");	// login에 필요한 password 값을 password(default)로 설정
-//                .defaultSuccessUrl("/");	// login에 성공하면 /로 redirect
+                .passwordParameter("password")	// login에 필요한 password 값을 password(default)로 설정
+                .defaultSuccessUrl("http://localhost:8080/");	// login에 성공하면 /로 redirect
 
 
         // logout 설정

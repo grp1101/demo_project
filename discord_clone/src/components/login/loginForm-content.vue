@@ -140,14 +140,21 @@ Headers:{
   'Context-Type':'multipart/form-data'
 }
                       });
+                      
                       if (result.status === 200) {
-                          // this.loginSuccess = true
+                          
+                          //result에 유저 정보가 들어오지도 않고 및의 formData가 전역 변수에 들어가지도 않고 있음. -> 수정할 부분
+                          const data= new FormData();
+                          data.append("userName" , "ABC");
+
+                          this.$store.commit("login", data);
                           alert("로그인 성공");
+                          this.$router.push('/');
                       }else{
-alert("로그인 실패");
+                          alert("로그인 실패");
                       }
                   } catch (err) {
-                      // this.loginError = true;
+                      // 8088/ 로 리다이렉트 되면서 오류남...
                       console.log("err내용 : "+err);
                   }
 

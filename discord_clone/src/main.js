@@ -5,6 +5,7 @@ import router from './routers'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import VueQRCodeComponent from 'vue-qrcode-component';
 import axios from 'axios';
+import Vuex from 'vuex';
 
 /* import specific icons  원하는 아이콘을 하나씩 import 해야함..*/
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
@@ -32,6 +33,25 @@ vue.component('qr-code', VueQRCodeComponent);
 
 vue.use(BootstrapVue);
 
+//https://luji.tistory.com/84  각 컴포넌트가 공유하는 상태 데이터는 전역에서 저장소(store)객체를 통해서 관리
+const store = new Vuex.Store({
+  state: {
+        userId: '',
+        userEmail: '',
+        userName: '',
+        token: ''
+  },
+  mutations: {
+    login (payload) {
+            this.userId = payload.userId
+            this.userEmail = payload.userEmail
+            this.userName = payload.userName
+            this.token = payload.token
+        },
+  }
+})
+
+
 //router 전용으로 사용하는 건줄 알았는데 아니었음...
 // import { useRouter } from "vue-router";
 // const router1 = useRouter();
@@ -40,4 +60,6 @@ vue.use(BootstrapVue);
 //axios 전역 설정
 vue.config.globalProperties.axios   = axios;
 
+vue.use(Vuex);
+vue.use(store);
 vue.use(router).mount('#app');

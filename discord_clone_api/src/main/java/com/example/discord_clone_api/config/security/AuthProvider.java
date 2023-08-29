@@ -35,10 +35,10 @@ public class AuthProvider implements AuthenticationProvider {
             List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority("USER")); // 권한 부여
 
-            token = new UsernamePasswordAuthenticationToken(userVo.getId(), null, roles);
+            token = new UsernamePasswordAuthenticationToken(userVo, null, roles);
             // 인증된 user 정보를 담아 SecurityContextHolder에 저장되는 token
 
-            return token;
+             return token;
         }
 
         throw new BadCredentialsException("No such user or wrong password.");
