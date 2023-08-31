@@ -8,6 +8,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,22 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    /*홈화면 요청 (defaultSuccessUrl으로 인해 토근 저장 후, 이 요청으로 넘아는 것 같음*/
+    @GetMapping("/")
+    public String home(Model model) { // 인증된 사용자의 정보를 보여줌
+//        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+//        model.addAttribute("user", auth);
+
+        String id = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // token에 저장되어 있는 인증된 사용자의 id 값
+
+        UserVo userVo = userService.getUserById(id);
+        userVo.setPassword(null); // password는 보이지 않도록 null로 설정
+        model.addAttribute("user", userVo);
+        return "/";
+    }
+
 
     /*회원가입 저장*/
     @PostMapping("/signup")

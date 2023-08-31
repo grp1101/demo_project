@@ -47,5 +47,8 @@ public class UserService {
         return userMapper.getUserList();
     }
 
-
+    /*토큰에 저장된 객체 인증값으로 유저 정보 가져오기*/
+    public UserVo getUserById(String id) {
+        return userMapper.getUserById(id);
+    }
 }
