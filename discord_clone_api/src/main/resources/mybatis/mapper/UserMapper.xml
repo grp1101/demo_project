@@ -12,7 +12,7 @@
 
 
     <!-- 개인정보 가져오기 -->
-    <select id="getUserByEmail" resultType="UserVo">
+    <select id="getUserByEmail" resultType="CustomUserDetails">
         SELECT *
         FROM User
         WHERE email = #{email}

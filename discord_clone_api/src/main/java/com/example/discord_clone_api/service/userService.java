@@ -1,6 +1,7 @@
 package com.example.discord_clone_api.service;
 
 import com.example.discord_clone_api.repository.UserMapper;
+import com.example.discord_clone_api.vo.CustomUserDetails;
 import com.example.discord_clone_api.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,7 +39,7 @@ public class UserService {
     };
 
     /*개인정보 가져오기*/
-    public UserVo getUserByEmail(String email) {
+    public CustomUserDetails getUserByEmail(String email) {
         return userMapper.getUserByEmail(email);
     }
 

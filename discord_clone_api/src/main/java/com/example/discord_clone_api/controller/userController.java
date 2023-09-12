@@ -21,16 +21,19 @@ public class UserController {
     /*홈화면 요청 (defaultSuccessUrl으로 인해 토근 저장 후, 이 요청으로 넘아는 것 같음*/
     @GetMapping("/")
     public String home(Model model) { // 인증된 사용자의 정보를 보여줌
-//        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        //실패 url을 설정하여 똑같이 getmapping을 만들고 해당 컨트롤러를 지나는지 확인 , 만약 지나면 인증이 성공되지 않아 해당 컨트롤러를 지나지 않은 것으로 판단
+        //밑에 http redirect를 설정하여 외부주소로 설정할 수 있음
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
 //        model.addAttribute("user", auth);
 
-        String id = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object id1 = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String id = "value";
         // token에 저장되어 있는 인증된 사용자의 id 값
 
         UserVo userVo = userService.getUserById(id);
         userVo.setPassword(null); // password는 보이지 않도록 null로 설정
         model.addAttribute("user", userVo);
-        return "/";
+        return "redirect:http://localhost:8080/";
     }
 
 
