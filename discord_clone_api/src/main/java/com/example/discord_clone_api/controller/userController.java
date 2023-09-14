@@ -26,8 +26,7 @@ public class UserController {
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
 //        model.addAttribute("user", auth);
 
-        Object id1 = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String id = "value";
+        Long id = (Long) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         // token에 저장되어 있는 인증된 사용자의 id 값
 
         UserVo userVo = userService.getUserById(id);

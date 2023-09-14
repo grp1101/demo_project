@@ -45,7 +45,7 @@ public class AuthProvider implements AuthenticationProvider {
 //        UserDetails userVo = (UserDetails) userService.getUserByEmail(email);
         CustomUserDetails userVo = (CustomUserDetails)userDetailsService.loadUserByUsername(email);
 
-        //UsernamePasswordAuthenticationToken은 Authentication 인터페이스의 구현체라고 함...
+        //*인증 객체를 담은 토큰 생성. UsernamePasswordAuthenticationToken은 Authentication 인터페이스의 구현체라고 함...
         UsernamePasswordAuthenticationToken token;
 
 
@@ -54,15 +54,12 @@ public class AuthProvider implements AuthenticationProvider {
             List<GrantedAuthority> roles = new ArrayList<>();
             roles.add(new SimpleGrantedAuthority("USER")); // 권한 부여
 
-//            token = new UsernamePasswordAuthenticationToken(userVo, null, roles);
-//            token = new UsernamePasswordAuthenticationToken(userVo , userVo.getPassword() , userVo.getAuthorities()); //User의 ID가 Principal 역할을 하고, Password가 Credential
-            // 인증된 user 정보를 담아 SecurityContextHolder에 저장되는 token
+            //인증된 user 정보를 담아 SecurityContextHolder에 저장되는 token . User의 ID가 Principal 역할을 하고, Password가 Credential
+//            UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.authenticated(userVo.getID(),null,roles);
+            token = new UsernamePasswordAuthenticationToken(email , password , roles);
 
-//            SecurityContextHolder.setContext((SecurityContext) token);
-//            Authentication auth = SecurityContextHolder.getContext().getAuthentication(); //인증되서 SecurityContextSecurityContextHolder에 저장되어 있는 Authentication객체를 가져오는 방법
-//             return token; //밑에와 같이 ProviderManager클래스의 authenticate를 실행하지 않아도 토큰에 담긴 인증객체가 인증되서 SecurityContextHolder에 저장되는 느낌임...
-//             return this.authenticate(token); //여기서 인증하고 인증이 성공하면 isAuthenticated(boolean)값을 TRUE로 바꿔준다?
-            return new UsernamePasswordAuthenticationToken(email,password,roles);
+             return token; //문제상황1.인증 여부를 알수 없음 문제상황2.anonymousUser로 SecurityContextHolder에 저장됨
+//             return this.authenticate(token);
         }
 
         throw new BadCredentialsException("비밀번호 맞지않음");
@@ -71,9 +68,9 @@ public class AuthProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
+        //필터에서 보내준 Authentication 객체를 현재 AuthenticationProvider가 처리할 수 있는지 확인하는 메서드
         boolean result = authentication.equals(UsernamePasswordAuthenticationToken.class);
         return result;
-//        return true; //토큰을 넘기기만 하면 true로 들어가게끔 되어 있는 것 같음. 근데 전달한 인증개체는 등록이 안됨...
     }
 
 }

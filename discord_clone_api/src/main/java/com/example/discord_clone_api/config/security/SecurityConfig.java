@@ -30,19 +30,18 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러
-                .cors().configurationSource(corsConfigurationSource()); //로그인 요청 시 CORS 에러
-
+                .cors().configurationSource(corsConfigurationSource()) //로그인 요청 시 CORS 에러
+                .and()
         // login 설정
-        http
+//        http
                 .formLogin() // form 로그인 인증 기능이 작동함
 //                .loginPage("/login_page")    // GET 요청 (login form을 보여줌) //나는 이거 넣으면 get요청 : 500 오류남
                 .loginProcessingUrl("/api/login")    // 사용자 이름과 암호를 제출할 URL . POST 요청 (login 창에 입력한 데이터를 처리). 예제는 form에서 넘기는 방식인데 vue의 date로 요청을 받을 수 있을지...
                 .usernameParameter("email")	// login에 필요한 id 값을 email로 설정 (default는 username)
                 .passwordParameter("password")	// login에 필요한 password 값을 password(default)로 설정
-                .successHandler(new LoginSuccessHandler()) //인증 성공 전이나 후에
-//                .defaultSuccessUrl("http://localhost:8080/");	// login에 성공하면 /로 redirect
-//                .failureHandler("")
-                .defaultSuccessUrl("/api/");	// login에 성공하면 /로 redirect
+                .successHandler(new LoginSuccessHandler()) //인증 성공 전이나 후에 실행
+                .failureHandler(new LoginFailureHandler()); //인증이 실패한 전이나 후에 실행
+//                .defaultSuccessUrl("/api/");	// login에 성공하면 /로 redirect. controller 안거칠려면 http://localhost:8080/ 로 명시
 
 
         // logout 설정

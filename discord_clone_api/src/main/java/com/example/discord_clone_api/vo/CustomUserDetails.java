@@ -15,6 +15,13 @@ public class CustomUserDetails implements UserDetails {
     private String AUTHORITY;
     private boolean ENABLED;
 
+    public CustomUserDetails(String ID, String PASSWORD, String USERNAME, String AUTHORITY, boolean ENABLED) {
+        this.ID = ID;
+        this.PASSWORD = PASSWORD;
+        this.USERNAME = USERNAME;
+        this.AUTHORITY = AUTHORITY;
+        this.ENABLED = ENABLED;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,5 +66,13 @@ public class CustomUserDetails implements UserDetails {
 
     public void setNAME(String name) {
         USERNAME = name;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

@@ -22,7 +22,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(email);
         }
 
-        System.out.println("CustomUserDetailsService 들어왔다!!!!!!!!!!!!!!!!");
+        System.out.println("UserDetailsService의 loadUserByUsername 실행");
         return user;
     }
 }

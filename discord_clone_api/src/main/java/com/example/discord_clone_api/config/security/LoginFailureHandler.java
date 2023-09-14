@@ -13,7 +13,7 @@ import java.io.IOException;
 public class LoginFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        System.out.println("로그인 실패 원인 : "+exception);
+        System.out.println("LoginFailureHandler 실행 : "+exception);
         response.sendRedirect("/api/");
     }
 }
