@@ -6,6 +6,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import VueQRCodeComponent from 'vue-qrcode-component';
 import axios from 'axios';
 import Vuex from 'vuex';
+import VueCookies from "vue-cookies";
 
 /* import specific icons  원하는 아이콘을 하나씩 import 해야함..*/
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
@@ -63,3 +64,7 @@ vue.config.globalProperties.axios   = axios;
 vue.use(Vuex);
 vue.use(store);
 vue.use(router).mount('#app');
+
+//쿠키 만료일은 7일
+vue.use(VueCookies);
+vue.$cookies.config("7d");

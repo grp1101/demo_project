@@ -25,10 +25,10 @@
     </select>
 
     <!-- 토큰에 저장된 객체 인증값으로 유저 정보 가져오기 -->
-    <select id="getUserById" resultType="UserVo">
+    <select id="getUserByEmailInUservo" resultType="UserVo">
         SELECT *
         FROM User
-        WHERE id = #{id}
+        WHERE email = #{email}
     </select>
 
 </mapper>

@@ -3,6 +3,7 @@ package com.example.discord_clone_api.config.security;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 //        session.setAttribute("greeting", authentication.getName() + "님 반갑습니다.");
         System.out.println("LoginSuccessHandler 실행 ");
         System.out.println(authentication.getName() + " 님 반갑습니다.");
-        response.sendRedirect("/api/");
+//        response.sendRedirect("/api/");
+
+        //forward
+        RequestDispatcher requestDispatehcer = request.getRequestDispatcher("/api/");
+        requestDispatehcer.forward(request, response);
     }
 }

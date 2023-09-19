@@ -49,7 +49,7 @@ public class UserService {
     }
 
     /*토큰에 저장된 객체 인증값으로 유저 정보 가져오기*/
-    public UserVo getUserById(Long id) {
-        return userMapper.getUserById(id);
+    public UserVo getUserByEmailInUservo(String email) {
+        return userMapper.getUserByEmailInUservo(email);
     }
 }

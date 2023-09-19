@@ -39,9 +39,9 @@ public class SecurityConfig {
                 .loginProcessingUrl("/api/login")    // 사용자 이름과 암호를 제출할 URL . POST 요청 (login 창에 입력한 데이터를 처리). 예제는 form에서 넘기는 방식인데 vue의 date로 요청을 받을 수 있을지...
                 .usernameParameter("email")	// login에 필요한 id 값을 email로 설정 (default는 username)
                 .passwordParameter("password")	// login에 필요한 password 값을 password(default)로 설정
+//                .defaultSuccessUrl("/api/")	// login에 성공하면 /로 redirect. controller 안거칠려면 http://localhost:8080/ 로 명시
                 .successHandler(new LoginSuccessHandler()) //인증 성공 전이나 후에 실행
                 .failureHandler(new LoginFailureHandler()); //인증이 실패한 전이나 후에 실행
-//                .defaultSuccessUrl("/api/");	// login에 성공하면 /로 redirect. controller 안거칠려면 http://localhost:8080/ 로 명시
 
 
         // logout 설정

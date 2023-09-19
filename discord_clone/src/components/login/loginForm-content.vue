@@ -139,7 +139,11 @@ loginData.append("password" , password);
 Headers:{
   'Context-Type':'multipart/form-data'
 }
-                      });
+                      }).then((res) => {
+               console.log(res);
+               // this.items 는 위에 data() 안에 변수중 하나이다.
+              //  this.items = res.data;
+            });
                       
                       if (result.status === 200) {
                           

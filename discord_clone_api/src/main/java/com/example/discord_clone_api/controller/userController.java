@@ -11,6 +11,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -18,23 +23,44 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /*홈화면 요청 (defaultSuccessUrl으로 인해 토근 저장 후, 이 요청으로 넘아는 것 같음*/
-    @GetMapping("/")
-    public String home(Model model) { // 인증된 사용자의 정보를 보여줌
+    /*홈화면 요청 (defaultSuccessUrl으로 인해 토큰 저장 후, 이 요청으로 넘아는 것 같음*/
+    /*forward는 get방식으로 못쓰는 것 같음...*/
+//    @GetMapping("/")
+////    @WebServlet("/api/")
+//    public String GEThome(HttpServletRequest request, HttpServletResponse response, Model model , HttpSession session) { // 인증된 사용자의 정보를 보여줌
+//        //실패 url을 설정하여 똑같이 getmapping을 만들고 해당 컨트롤러를 지나는지 확인 , 만약 지나면 인증이 성공되지 않아 해당 컨트롤러를 지나지 않은 것으로 판단
+//        //밑에 http redirect를 설정하여 외부주소로 설정할 수 있음
+//        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+////        model.addAttribute("user", auth);
+//
+//        Long id = (Long) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        // token에 저장되어 있는 인증된 사용자의 id 값
+//
+//        UserVo userVo = userService.getUserById(id);
+//        userVo.setPassword(null); // password는 보이지 않도록 null로 설정
+//        model.addAttribute("user", userVo);
+//        return "redirect:http://localhost:8080/";
+//    }
+
+
+    /*홈화면 요청 (defaultSuccessUrl으로 인해 토큰 저장 후, 이 요청으로 넘아는 것 같음*/
+    @PostMapping ("/")
+    public String POSThome(HttpServletRequest request, HttpServletResponse response, Model model , HttpSession session) { // 인증된 사용자의 정보를 보여줌
         //실패 url을 설정하여 똑같이 getmapping을 만들고 해당 컨트롤러를 지나는지 확인 , 만약 지나면 인증이 성공되지 않아 해당 컨트롤러를 지나지 않은 것으로 판단
         //밑에 http redirect를 설정하여 외부주소로 설정할 수 있음
         Authentication auth= SecurityContextHolder.getContext().getAuthentication();
 //        model.addAttribute("user", auth);
 
-        Long id = (Long) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         // token에 저장되어 있는 인증된 사용자의 id 값
 
-        UserVo userVo = userService.getUserById(id);
-        userVo.setPassword(null); // password는 보이지 않도록 null로 설정
-        model.addAttribute("user", userVo);
+        UserVo userVo = userService.getUserByEmailInUservo(email);
+        userVo.setPassword(""); // password는 보이지 않도록 null로 설정
+//        model.addAttribute("user", userVo);
+//        session.setAttribute("infomatetion" , userVo);
+        request.setAttribute("infomatetion" , userVo);
         return "redirect:http://localhost:8080/";
     }
-
 
     /*회원가입 저장*/
     @PostMapping("/signup")
