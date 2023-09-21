@@ -30,7 +30,6 @@ spring:
   #    view:
   #      prefix: /WEB-INF/jsp/                                   # View Resolver setting
   #      suffix: .jsp
-
   datasource:
     url: jdbc:mariadb://125.133.48.203:52099/userdb
     username: heatmaster
@@ -47,3 +46,11 @@ mybatis:
     call-setters-on-nulls: true
     default-statement-timeout: 500
   type-aliases-package: com.example.discord_clone_api.vo
+logging:
+  file:
+    path: /Users/hong/Logs/kotlin-spring
+    max-size: 500MB
+    max-history: 10
+  level:
+    root: info
+    me.hong.kotlinspring: debug

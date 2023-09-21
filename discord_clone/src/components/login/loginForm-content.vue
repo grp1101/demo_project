@@ -1,7 +1,6 @@
 <template>
-<div class='loginForm_content_background'>
-
-      <!-- <div class="protected" v-if="loginSuccess">
+  <div class="loginForm_content_background">
+    <!-- <div class="protected" v-if="loginSuccess">
           <h1>
               <b-badge variant="success">보안 사이트에 대한 액세스가 허용되었습니다</b-badge>
           </h1>
@@ -31,189 +30,191 @@
           </form>
       </div> -->
 
+    <!-- 나중에 밑에 코드로 바꾸기 -->
+    <div id="loginForm_content_detail">
+      <form>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="email">이메일 또는 전화번호</label>
+          <input type="email" v-model="email" class="form-control" />
+        </div>
 
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="password">비밀번호</label>
+          <input type="password" v-model="password" class="form-control" />
+        </div>
 
-
-<!-- 나중에 밑에 코드로 바꾸기 -->
-<div id='loginForm_content_detail'>
-<form>
-  
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="email">이메일 또는 전화번호</label>
-    <input type="email" v-model="email" class="form-control" />
-  </div>
-
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <label class="form-label" for="password">비밀번호</label>
-    <input type="password" v-model="password" class="form-control" />
-  </div>
-
-  <!-- 2 column grid layout for inline styling -->
-  <div class="row mb-4">
-    
-      <!-- Checkbox -->
-    <!-- <div class="col d-flex justify-content-center">
+        <!-- 2 column grid layout for inline styling -->
+        <div class="row mb-4">
+          <!-- Checkbox -->
+          <!-- <div class="col d-flex justify-content-center">
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
         <label class="form-check-label" for="form2Example31"> Remember me </label>
       </div>
     </div> -->
 
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">비밀번호를 잊으셨나요?</a>
-    </div>
-  </div>
+          <div class="col">
+            <!-- Simple link -->
+            <a href="#!">비밀번호를 잊으셨나요?</a>
+          </div>
+        </div>
 
-  <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4" v-on:click="login(email ,password)">로그인</button>
+        <!-- Submit button -->
+        <button
+          type="button"
+          class="btn btn-primary btn-block mb-4"
+          v-on:click="login(email, password)"
+        >
+          로그인
+        </button>
 
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>계정이 필요한가요? <a href="#!">가입하기</a></p>
-    <!-- <p>or sign up with:</p> -->
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-facebook-f"></i>
-    </button>
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>계정이 필요한가요? <a href="#!">가입하기</a></p>
+          <!-- <p>or sign up with:</p> -->
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
 
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-google"></i>
-    </button>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
 
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-twitter"></i>
-    </button>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
 
-    <button type="button" class="btn btn-link btn-floating mx-1">
-      <i class="fab fa-github"></i>
-    </button>
-  </div>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
 
-<!-- <qr-code text="login"></qr-code>  -->
-<!-- 텍스트를 url로 만드는 QR임... -->
-<!-- https://yoyostudy.tistory.com/53 -->
-    <!-- <input placeholder="접속 URL 입력" v-model="site" v-on:focusin="value = ''">
+        <!-- <qr-code text="login"></qr-code>  -->
+        <!-- 텍스트를 url로 만드는 QR임... -->
+        <!-- https://yoyostudy.tistory.com/53 -->
+        <!-- <input placeholder="접속 URL 입력" v-model="site" v-on:focusin="value = ''">
     <div class="btn" v-on:click="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl='+site+'&choe=UTF-8'">생성</div>
     <img :src="value" v-if="this.value.length > 1"> -->
 
-<div class="test">
-    <img :src="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8'" >
-    <div>QR코드로 로그인</div>
-</div>
-</form>
-
-</div>
-</div>
+        <div class="test">
+          <img
+            :src="
+              (value =
+                'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8')
+            "
+          />
+          <div>QR코드로 로그인</div>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: 'loginForm-content',
-  data(){
-    return{
-                  loginSuccess: false,
-                  loginError: false,
-                  user: '',
-                  email: '',
-                  password: '',
-                  error: false
-    }
+  name: "loginForm-content",
+  data() {
+    return {
+      loginSuccess: false,
+      loginError: false,
+      user: "",
+      email: "",
+      password: "",
+      error: false,
+    };
   },
-  components: {
-
-  },
+  components: {},
   methods: {
-        async login(email ,password ){
+    async login(email, password) {
+      const loginData = new FormData();
 
-const loginData= new FormData();
+      loginData.append("email", email);
+      loginData.append("password", password);
 
-loginData.append("email" , email);
-loginData.append("password" , password);
+      // try {
+      //   const result = await this.axios
+      //     .post("/api/login", loginData, {
+      //       Headers: {
+      //         "Context-Type": "multipart/form-data",
+      //       },
+      //     })
+      //     .then((res) => {
+      //       console.log(res);
+      //       //  this.items = res.data;
+      //     });
 
+      //   if (result.status === 200) {
+      //     // const data= new FormData();
+      //     // data.append("userName" , "ABC");
+      //     // this.$store.commit("login", data);
 
-                  try {
-                      const result = await this.axios.post('/api/login', loginData,{
-Headers:{
-  'Context-Type':'multipart/form-data'
-}
-                      }).then((res) => {
-               console.log(res);
-               // this.items 는 위에 data() 안에 변수중 하나이다.
-              //  this.items = res.data;
-            });
-                      
-                      if (result.status === 200) {
-                          
-                          //result에 유저 정보가 들어오지도 않고 및의 formData가 전역 변수에 들어가지도 않고 있음. -> 수정할 부분
-                          const data= new FormData();
-                          data.append("userName" , "ABC");
+      //     alert("로그인 성공");
+      //     this.$router.push("/");
+      //   } else {
+      //     alert("로그인 실패");
+      //   }
+      // } catch (err) {
+      //   // 8088/ 로 리다이렉트 되면서 오류남...
+      //   console.log("err내용 : " + err);
+      // }
 
-                          this.$store.commit("login", data);
-                          alert("로그인 성공");
-                          this.$router.push('/');
-                      }else{
-                          alert("로그인 실패");
-                      }
-                  } catch (err) {
-                      // 8088/ 로 리다이렉트 되면서 오류남...
-                      console.log("err내용 : "+err);
-                  }
+      this.axios(
+        {
+          method: "post",
+          url: "/api/login",
+          data: loginData,
+          Headers: {
+            "Context-Type": "multipart/form-data",
+          },
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+          console.log("/api/login 로그인 성공");
 
+          this.$cookies.set("user", response.data);
+          console.log("cookie 생성여부 : ", this.$cookies.isKey("user"));
+          console.log("cookie 내용 : ", this.$cookies.get("user"));
 
-
-  //         this.axios({
-  //         method: 'post',
-  //         url: '/api/login',
-  //         // data: {
-  //         //                     email: email,
-  //         //                     password: password
-  //         // },
-  //         //           auth: {
-  //         //                     email: email,
-  //         //                     password: password
-  //         // },
-  // }, { withCredentials : true })
-  //       .then((response) => {
-  //         console.log("response.data = " , response.data);
-  //         console.log("/api/login 로그인 성공");
-  //       })
-  //       .finally(() => {
-  //         console.log("/api/login 실행");
-  //       }); 
+          alert("로그인 성공");
+          this.$router.push("/");
+        })
+        .finally(() => {
+          console.log("/api/login 실행");
+        });
+    },
+    async login_example2(user, password) {
+      try {
+        const result = await this.axios.get("/api/login", {
+          auth: {
+            username: user,
+            password: password,
+          },
+        });
+        if (result.status === 200) {
+          this.loginSuccess = true;
+        }
+      } catch (err) {
+        this.loginError = true;
+        console.log("err내용 : " + err);
+        // throw new Error(err)
+      }
+    },
   },
-    async login_example2(user ,password ){
-                  try {
-                      const result = await this.axios.get('/api/login', {
-                          auth: {
-                              username: user,
-                              password: password
-                          }
-                      });
-                      if (result.status === 200) {
-                          this.loginSuccess = true
-                      }
-                  } catch (err) {
-                      this.loginError = true;
-                      console.log("err내용 : "+err);
-                      // throw new Error(err)
-                  }
-  },
-}
-}
-
+};
 </script>
 
 <style>
-.loginForm_content_background{
-  background-color: #2ECCFA;
-    width: 60%;
-    margin-left: 20%;
-    height: 60%;
-};
-#loginForm_content_detail{
-    width: 100px;
-};
+.loginForm_content_background {
+  background-color: #2eccfa;
+  width: 60%;
+  margin-left: 20%;
+  height: 60%;
+}
+#loginForm_content_detail {
+  width: 100px;
+}
 </style>
