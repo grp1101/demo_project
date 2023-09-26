@@ -128,37 +128,10 @@ export default {
   components: {},
   methods: {
     async login(email, password) {
+      //formData형태로 시큐리티에 파라미터 넘기기
       const loginData = new FormData();
-
       loginData.append("email", email);
       loginData.append("password", password);
-
-      // try {
-      //   const result = await this.axios
-      //     .post("/api/login", loginData, {
-      //       Headers: {
-      //         "Context-Type": "multipart/form-data",
-      //       },
-      //     })
-      //     .then((res) => {
-      //       console.log(res);
-      //       //  this.items = res.data;
-      //     });
-
-      //   if (result.status === 200) {
-      //     // const data= new FormData();
-      //     // data.append("userName" , "ABC");
-      //     // this.$store.commit("login", data);
-
-      //     alert("로그인 성공");
-      //     this.$router.push("/");
-      //   } else {
-      //     alert("로그인 실패");
-      //   }
-      // } catch (err) {
-      //   // 8088/ 로 리다이렉트 되면서 오류남...
-      //   console.log("err내용 : " + err);
-      // }
 
       this.axios(
         {
@@ -173,35 +146,23 @@ export default {
       )
         .then((response) => {
           console.log("response.data = ", response.data);
-          console.log("/api/login 로그인 성공");
 
-          this.$cookies.set("user", response.data);
-          console.log("cookie 생성여부 : ", this.$cookies.isKey("user"));
-          console.log("cookie 내용 : ", this.$cookies.get("user"));
+          if (response.data.email != null) {
+            console.log("/api/login 로그인 성공");
 
-          alert("로그인 성공");
-          this.$router.push("/");
+            this.$cookies.set("user", response.data);
+            console.log("cookie 생성여부 : ", this.$cookies.isKey("user"));
+            console.log("cookie 내용 : ", this.$cookies.get("user"));
+
+            alert("Login Success");
+            this.$router.push("/");
+          } else {
+            alert("Login Failed");
+          }
         })
         .finally(() => {
           console.log("/api/login 실행");
         });
-    },
-    async login_example2(user, password) {
-      try {
-        const result = await this.axios.get("/api/login", {
-          auth: {
-            username: user,
-            password: password,
-          },
-        });
-        if (result.status === 200) {
-          this.loginSuccess = true;
-        }
-      } catch (err) {
-        this.loginError = true;
-        console.log("err내용 : " + err);
-        // throw new Error(err)
-      }
     },
   },
 };

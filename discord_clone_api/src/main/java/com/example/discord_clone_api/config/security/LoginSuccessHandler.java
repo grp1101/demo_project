@@ -18,7 +18,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         System.out.println("LoginSuccessHandler 실행 ");
         System.out.println(authentication.getName() + " 님 반갑습니다.");
 
-        //redirec
+        //redirect POST
         //response.sendRedirect("/api/");
 
         //forward (getmapping 요청이 안되고 postmapping으로 들어감)

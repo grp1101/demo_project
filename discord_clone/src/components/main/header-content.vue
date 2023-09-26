@@ -75,6 +75,15 @@
       <button
         type="button"
         class="btn"
+        v-on:click="logout()"
+        style="background-color: #ffffff; border-radius: 20px"
+      >
+        <!-- <router-link to="/">Login</router-link><router-view /> -->
+        Logout
+      </button>
+      <button
+        type="button"
+        class="btn"
         v-on:click="login()"
         style="background-color: #ffffff; border-radius: 20px"
       >
@@ -151,6 +160,43 @@ export default {
     signUp() {
       console.log("header-contetn sign up method 실행");
       this.$router.push("/signup_page");
+    },
+    logout() {
+      console.log("header-content logout method 실행");
+
+      this.axios(
+        {
+          method: "post",
+          url: "/api/logout",
+          // data: loginData,
+          // Headers: {
+          //   "Context-Type": "multipart/form-data",
+          // },
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+
+          if (response.data.reulst == true) {
+            console.log("/api/logout 로그아웃 성공");
+            console.log("Logout Success");
+          } else {
+            console.log("Logout Failed");
+          }
+        })
+        .finally(() => {
+          console.log("/api/logout 실행");
+        });
+
+      //쿠키 삭제
+      this.$cookies.remove("user");
+      //로그아웃 확인 경고창
+      if (this.$cookies.isKey("user") === false) {
+        alert("로그아웃 되었습니다.");
+      }
+      //홈화면으로 전환
+      this.$router.go(0);
     },
   },
 };

@@ -30,10 +30,11 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러
-                .cors().configurationSource(corsConfigurationSource()) //로그인 요청 시 CORS 에러
-                .and()
+                .cors().configurationSource(corsConfigurationSource()); //로그인 요청 시 CORS 에러
+
+
         // login 설정
-//        http
+        http
                 .formLogin() // form 로그인 인증 기능이 작동함
 //                .loginPage("/login_page")    // GET 요청 (login form을 보여줌) //나는 이거 넣으면 get요청 : 500 오류남
                 .loginProcessingUrl("/api/login")    // 사용자 이름과 암호를 제출할 URL . POST 요청 (login 창에 입력한 데이터를 처리). 예제는 form에서 넘기는 방식인데 vue의 date로 요청을 받을 수 있을지...
@@ -45,10 +46,12 @@ public class SecurityConfig {
 
 
         // logout 설정
-//        http
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/");	// logout에 성공하면 /로 redirect
+        http
+                .logout()
+                .logoutUrl("/api/logout"); //로그아웃 처리 url
+//                .logoutSuccessUrl("/")	// logout에 성공하면 /로 redirect
+//                .logoutSuccessHandler((request, response, authentication) -> {response.sendRedirect("/login");}) // 로그아웃 성공 핸들러
+//                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
 
         return http.build();
     }
