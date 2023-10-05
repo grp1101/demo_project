@@ -9,10 +9,17 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -48,9 +55,15 @@ public class SecurityConfig {
         // logout 설정
         http
                 .logout()
-                .logoutUrl("/api/logout"); //로그아웃 처리 url
-//                .logoutSuccessUrl("/")	// logout에 성공하면 /로 redirect
-//                .logoutSuccessHandler((request, response, authentication) -> {response.sendRedirect("/login");}) // 로그아웃 성공 핸들러
+                .logoutUrl("/api/logout") //로그아웃 처리 url
+                .logoutSuccessHandler(new LogoutSuccessHandler() {
+                    @Override
+                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+                        System.out.println("onLogoutSuccess 실행 ");
+
+//                        response.sendRedirect("http://localhost:8080/");
+                    }
+                }); // 로그아웃 성공 핸들러
 //                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
 
         return http.build();

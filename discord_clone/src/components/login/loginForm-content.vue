@@ -1,6 +1,8 @@
 <template>
-  <div class="loginForm_content_background">
-    <!-- <div class="protected" v-if="loginSuccess">
+  <div class="board">
+    <div class="loginForm_content_background">
+      <!-- 회원가입 없는 로그인 버전 -->
+      <!-- <div class="protected" v-if="loginSuccess">
           <h1>
               <b-badge variant="success">보안 사이트에 대한 액세스가 허용되었습니다</b-badge>
           </h1>
@@ -30,84 +32,97 @@
           </form>
       </div> -->
 
-    <!-- 나중에 밑에 코드로 바꾸기 -->
-    <div id="loginForm_content_detail">
-      <form>
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="email">이메일 또는 전화번호</label>
-          <input type="email" v-model="email" class="form-control" />
-        </div>
+      <!-- 나중에 밑에 코드로 바꾸기 -->
+      <div id="loginForm_content_detail_style">
+        <h3>돌아오신 것을 환영해요!</h3>
+        <p>다시 만나다니 너무 반가워요!</p>
 
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="password">비밀번호</label>
-          <input type="password" v-model="password" class="form-control" />
-        </div>
+        <form>
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="email">이메일</label>
+            <input type="email" v-model="email" class="form-control" />
+          </div>
 
-        <!-- 2 column grid layout for inline styling -->
-        <div class="row mb-4">
-          <!-- Checkbox -->
-          <!-- <div class="col d-flex justify-content-center">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-        <label class="form-check-label" for="form2Example31"> Remember me </label>
-      </div>
-    </div> -->
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="password">비밀번호</label>
+            <input type="password" v-model="password" class="form-control" />
+          </div>
+
+          <!-- 2 column grid layout for inline styling -->
+          <!-- Checkbox 및 입력한 값 임시 저장-->
+          <!-- <div class="row mb-4">
+          <div class="col d-flex justify-content-center">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form2Example31"
+                checked
+              />
+              <label class="form-check-label" for="form2Example31">
+                Remember me
+              </label>
+            </div>
+          </div>
+        </div> -->
 
           <div class="col">
             <!-- Simple link -->
             <a href="#!">비밀번호를 잊으셨나요?</a>
           </div>
-        </div>
 
-        <!-- Submit button -->
-        <button
-          type="button"
-          class="btn btn-primary btn-block mb-4"
-          v-on:click="login(email, password)"
-        >
-          로그인
-        </button>
-
-        <!-- Register buttons -->
-        <div class="text-center">
-          <p>계정이 필요한가요? <a href="#!">가입하기</a></p>
-          <!-- <p>or sign up with:</p> -->
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
+          <!-- Submit button -->
+          <button
+            type="button"
+            class="btn btn-primary btn-block mb-4"
+            v-on:click="login(email, password)"
+          >
+            로그인
           </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-          </button>
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>계정이 필요한가요? <a href="#!">가입하기</a></p>
+            <!-- <p>or sign up with:</p> -->
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-          </button>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-google"></i>
+            </button>
 
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-          </button>
-        </div>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-twitter"></i>
+            </button>
 
-        <!-- <qr-code text="login"></qr-code>  -->
-        <!-- 텍스트를 url로 만드는 QR임... -->
-        <!-- https://yoyostudy.tistory.com/53 -->
-        <!-- <input placeholder="접속 URL 입력" v-model="site" v-on:focusin="value = ''">
-    <div class="btn" v-on:click="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl='+site+'&choe=UTF-8'">생성</div>
-    <img :src="value" v-if="this.value.length > 1"> -->
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-github"></i>
+            </button>
+          </div>
 
-        <div class="test">
-          <img
-            :src="
-              (value =
-                'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8')
-            "
-          />
-          <div>QR코드로 로그인</div>
-        </div>
-      </form>
+          <!-- <qr-code text="login"></qr-code>  -->
+          <!-- 텍스트를 url로 만드는 QR임... -->
+          <!-- https://yoyostudy.tistory.com/53 -->
+          <!-- <input placeholder="접속 URL 입력" v-model="site" v-on:focusin="value = ''">
+        <div class="btn" v-on:click="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl='+site+'&choe=UTF-8'">생성</div>
+        <img :src="value" v-if="this.value.length > 1"> -->
+        </form>
+      </div>
+
+      <div id="QR_style" class="text-center">
+        <img
+          :src="
+            (value =
+              'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8')
+          "
+        />
+        <h3>QR코드로 로그인</h3>
+        <p>DISCORD 모바일앱으로 스캔해 바로 로그인하세요.</p>
+      </div>
     </div>
   </div>
 </template>
@@ -170,12 +185,25 @@ export default {
 
 <style>
 .loginForm_content_background {
-  background-color: #2eccfa;
+  /* https://hianna.tistory.com/675 가운데로 보내는 방법 */
+  background-color: #33393a;
   width: 60%;
   margin-left: 20%;
+  padding-top: 5%;
   height: 60%;
+  font-size: 15px;
+  color: #7e8f93;
 }
-#loginForm_content_detail {
-  width: 100px;
+#loginForm_content_detail_style {
+  width: 300px;
+  margin-left: 5%;
+  margin-right: 5%;
+  float: left;
+}
+#QR_style {
+  /* margin: 10%; */
+}
+h3 {
+  color: white;
 }
 </style>

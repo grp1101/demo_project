@@ -178,9 +178,17 @@ export default {
         .then((response) => {
           console.log("response.data = ", response.data);
 
-          if (response.data.reulst == true) {
-            console.log("/api/logout 로그아웃 성공");
+          if (response.status == 200) {
             console.log("Logout Success");
+
+            //쿠키 삭제
+            this.$cookies.remove("user");
+            //로그아웃 확인 경고창
+            if (this.$cookies.isKey("user") === false) {
+              alert("Logout Success");
+            }
+            //홈화면으로 전환
+            this.$router.go(0);
           } else {
             console.log("Logout Failed");
           }
@@ -188,15 +196,6 @@ export default {
         .finally(() => {
           console.log("/api/logout 실행");
         });
-
-      //쿠키 삭제
-      this.$cookies.remove("user");
-      //로그아웃 확인 경고창
-      if (this.$cookies.isKey("user") === false) {
-        alert("로그아웃 되었습니다.");
-      }
-      //홈화면으로 전환
-      this.$router.go(0);
     },
   },
 };
