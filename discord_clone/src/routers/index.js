@@ -25,6 +25,11 @@ path: "/signup_page",
 name: "signup",
 component: () => import("../signup-page.vue"),
 },
+{
+path: "/access/download_page",
+name: "download",
+component: () => import("../components/nav/download-page.vue"),
+},
 ];
 
 const router = createRouter({

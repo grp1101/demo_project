@@ -9,8 +9,15 @@ module.exports =defineConfig({
     // indexPath: "../static/index.html", //index.html 파일 생성 위치
     devServer: {
         //프록시 설정
+        //https://rkaehdaos.github.io/dev/frontend/Vue-js/vue-use-proxy/ 
+        //api로 시작하는 요청만 프록시 서버로 전송하도록 선언?
         proxy:{
-            '/': {
+            '^/api': { 
+                target: "http://localhost:8088",
+                changeOrigin:true,
+                ws:false,
+            },
+            '^/access': { 
                 target: "http://localhost:8088",
                 changeOrigin:true,
                 ws:false,

@@ -25,5 +25,7 @@ export default {
   background-image: url("@/assets/jenna12.jpg");
   /*이미지 사이즈 꽉 채워주는 방법인데 height: 100%*/
   background-size: cover;
+  display: flex;
+  align-items: center;
 }
 </style>

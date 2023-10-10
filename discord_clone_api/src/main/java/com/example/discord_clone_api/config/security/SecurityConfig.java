@@ -32,8 +32,9 @@ public class SecurityConfig {
         // 권한에 따라 허용하는 url 설정
         // /login, /signup 페이지는 모두 허용, 다른 페이지는 인증된 사용자만 허용
         http
-                .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .authorizeRequests() //시큐리티 처리에 HttpServletRequest를 이용하도록 명시
+//                .antMatchers("/**").permitAll()// 페이지 접근 권한 허용
+                .antMatchers("/signup_page").authenticated()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러
@@ -55,15 +56,15 @@ public class SecurityConfig {
         // logout 설정
         http
                 .logout()
-                .logoutUrl("/api/logout") //로그아웃 처리 url
-                .logoutSuccessHandler(new LogoutSuccessHandler() {
-                    @Override
-                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        System.out.println("onLogoutSuccess 실행 ");
-
+                .logoutUrl("/api/logout"); //로그아웃 처리 url
+//                .logoutSuccessHandler(new LogoutSuccessHandler() {
+//                    @Override
+//                    public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+//                        System.out.println("onLogoutSuccess 실행 ");
+//
 //                        response.sendRedirect("http://localhost:8080/");
-                    }
-                }); // 로그아웃 성공 핸들러
+//                    }
+//                }); // 로그아웃 성공 핸들러
 //                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
 
         return http.build();

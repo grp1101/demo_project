@@ -24,7 +24,9 @@
         <ul class="navbar-nav mr-auto">
           <!-- <li class="nav-item active"> -->
           <li class="nav-item">
-            <a class="nav-link" href="#" id="navtext">Download </a>
+            <a class="nav-link" href="/access/download_page" id="navtext"
+              >Download
+            </a>
             <!-- <span class="sr-only">(current)</span> -->
           </li>
           <li class="nav-item">
@@ -77,6 +79,7 @@
         class="btn"
         v-on:click="logout()"
         style="background-color: #ffffff; border-radius: 20px"
+        v-show="KeyChecked"
       >
         <!-- <router-link to="/">Login</router-link><router-view /> -->
         Logout
@@ -142,9 +145,11 @@ export default {
   data() {
     return {
       user_name: "",
+      KeyChecked: false,
     };
   },
   mounted() {
+    this.KeyChecked = this.$cookies.isKey("user");
     if (this.$cookies.isKey("user") === true) {
       const user = this.$cookies.get("user"); //eslint-disable-line no-unused-vars
       this.user_name = user.username;
@@ -162,6 +167,7 @@ export default {
       this.$router.push("/signup_page");
     },
     logout() {
+      //두번 실행되는 원인 찾기(F12창과 같이 뜨면 두번실행됨....ㅎㅎ)
       console.log("header-content logout method 실행");
 
       this.axios(
