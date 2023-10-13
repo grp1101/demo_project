@@ -34,7 +34,9 @@ public class SecurityConfig {
         http
                 .authorizeRequests() //시큐리티 처리에 HttpServletRequest를 이용하도록 명시
 //                .antMatchers("/**").permitAll()// 페이지 접근 권한 허용
-                .antMatchers("/signup_page").authenticated()
+                .antMatchers("/api/**").permitAll()
+//                .antMatchers("/access/**").authenticated() //인증된 사람만?
+                .antMatchers("/access/**").hasRole("USER") //권한이 USER인 사람만?
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러

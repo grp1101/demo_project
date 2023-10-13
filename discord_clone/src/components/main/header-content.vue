@@ -149,9 +149,9 @@ export default {
     };
   },
   mounted() {
-    this.KeyChecked = this.$cookies.isKey("user");
-    if (this.$cookies.isKey("user") === true) {
-      const user = this.$cookies.get("user"); //eslint-disable-line no-unused-vars
+    this.KeyChecked = this.$cookies.isKey("USER");
+    if (this.$cookies.isKey("USER") === true) {
+      const user = this.$cookies.get("USER"); //eslint-disable-line no-unused-vars
       this.user_name = user.username;
     }
   },
@@ -188,9 +188,9 @@ export default {
             console.log("Logout Success");
 
             //쿠키 삭제
-            this.$cookies.remove("user");
+            this.$cookies.remove("USER");
             //로그아웃 확인 경고창
-            if (this.$cookies.isKey("user") === false) {
+            if (this.$cookies.isKey("USER") === false) {
               alert("Logout Success");
             }
             //홈화면으로 전환
@@ -206,9 +206,6 @@ export default {
   },
 };
 
-// this.VueCookies.isKey("user");
-// var user = this.$cookies.get("user");
-// console.log("cookies", user);
 </script>
 
 <style>

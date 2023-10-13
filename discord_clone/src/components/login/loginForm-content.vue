@@ -165,9 +165,9 @@ export default {
           if (response.data.email != null) {
             console.log("/api/login 로그인 성공");
 
-            this.$cookies.set("user", response.data);
-            console.log("cookie 생성여부 : ", this.$cookies.isKey("user"));
-            console.log("cookie 내용 : ", this.$cookies.get("user"));
+            this.$cookies.set("USER", response.data);
+            console.log("cookie 생성여부 : ", this.$cookies.isKey("USER"));
+            console.log("cookie 내용 : ", this.$cookies.get("USER"));
 
             alert("Login Success");
             this.$router.push("/");
