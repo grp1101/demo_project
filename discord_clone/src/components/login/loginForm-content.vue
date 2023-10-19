@@ -165,9 +165,16 @@ export default {
           if (response.data.email != null) {
             console.log("/api/login 로그인 성공");
 
-            this.$cookies.set("USER", response.data);
+            // this.$cookies.set("USER", response.data);
             console.log("cookie 생성여부 : ", this.$cookies.isKey("USER"));
             console.log("cookie 내용 : ", this.$cookies.get("USER"));
+
+            if (this.$cookies.isKey("USER") === true) {
+              this.$cookies.set("USER", "9876"); //백엔드 쿠키값을 변경
+            }
+
+            //변경된 쿠키 value
+            console.log("변경된 cookie 내용 : ", this.$cookies.get("USER"));
 
             alert("Login Success");
             this.$router.push("/");

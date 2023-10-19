@@ -20,6 +20,7 @@ public class UserVo {
     public String phone;
     public String website;
     public String company;
+    public String authority;
     public int result;
 
 
@@ -93,6 +94,14 @@ public class UserVo {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 
     public int getResult() {

@@ -68,4 +68,4 @@ vue.use(router).mount('#app');
 //쿠키 만료일은 7일
 //https://kyounghwan01.github.io/blog/Vue/vue/vue-cookies/
 vue.use(VueCookies);
-vue.$cookies.config("7d");
+// vue.$cookies.config("5m");

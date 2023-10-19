@@ -24,7 +24,7 @@
         <ul class="navbar-nav mr-auto">
           <!-- <li class="nav-item active"> -->
           <li class="nav-item">
-            <a class="nav-link" href="/access/download_page" id="navtext"
+            <a class="nav-link" v-on:click="LoadDownloadPage()" id="navtext"
               >Download
             </a>
             <!-- <span class="sr-only">(current)</span> -->
@@ -102,6 +102,16 @@
         <!-- <router-link to="/">Login</router-link><router-view /> -->
         회원가입
       </button>
+      <button
+        type="button"
+        class="btn"
+        v-on:click="security()"
+        style="background-color: #ffffff; border-radius: 20px"
+        v-show="KeyChecked"
+      >
+        <!-- <router-link to="/">Login</router-link><router-view /> -->
+        관리자
+      </button>
     </nav>
     <br />
     <br />
@@ -146,6 +156,7 @@ export default {
     return {
       user_name: "",
       KeyChecked: false,
+      SYSTEMChecked: false,
     };
   },
   mounted() {
@@ -153,6 +164,10 @@ export default {
     if (this.$cookies.isKey("USER") === true) {
       const user = this.$cookies.get("USER"); //eslint-disable-line no-unused-vars
       this.user_name = user.username;
+
+      if (this.$cookies.get("USER") == "SYSTEM_ADMIN") {
+        this.SYSTEMChecked = true;
+      }
     }
   },
   methods: {
@@ -203,9 +218,34 @@ export default {
           console.log("/api/logout 실행");
         });
     },
+    LoadDownloadPage() {
+      console.log("header-content LoadDownloadPage method 실행");
+
+      this.axios(
+        {
+          method: "post",
+          url: "/access/download_page",
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+
+          if (response.status == 200) {
+            console.log("download_page access Success");
+
+            //다운로트 페이지 화면 들어가기
+            this.$router.push("/access/download_page");
+          } else {
+            console.log("download_page access failed");
+          }
+        })
+        .finally(() => {
+          console.log("/access/download_page 실행");
+        });
+    },
   },
 };
-
 </script>
 
 <style>

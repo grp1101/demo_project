@@ -31,12 +31,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // 권한에 따라 허용하는 url 설정
         // /login, /signup 페이지는 모두 허용, 다른 페이지는 인증된 사용자만 허용
+        // 인간에 관한 표현방식 https://velog.io/@dailylifecoding/spring-security-authorize-api-basic
         http
                 .authorizeRequests() //시큐리티 처리에 HttpServletRequest를 이용하도록 명시
 //                .antMatchers("/**").permitAll()// 페이지 접근 권한 허용
                 .antMatchers("/api/**").permitAll()
-//                .antMatchers("/access/**").authenticated() //인증된 사람만?
-                .antMatchers("/access/**").hasRole("USER") //권한이 USER인 사람만?
+//                .antMatchers("/access/**").authenticated() //인증된 사람만
+                .antMatchers("/access/**").hasAuthority("USER") //권한이 USER인 사람만
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러
@@ -68,6 +69,7 @@ public class SecurityConfig {
 //                    }
 //                }); // 로그아웃 성공 핸들러
 //                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
+        http.rememberMe();//쿠키 생성하는 명령어 https://ugo04.tistory.com/166
 
         return http.build();
     }
