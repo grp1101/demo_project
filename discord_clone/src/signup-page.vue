@@ -1,16 +1,16 @@
 <template>
   <div class="signupPage_background">
-    <signup-form-content></signup-form-content>
+    <!-- <signup-form-content></signup-form-content> -->
   </div>
 </template>
 
 <script>
-import signupFormContent from "./components/signup/signupForm-content.vue";
+// import signupFormContent from "./components/signup/signupForm-content.vue";
 
 export default {
   name: "signup-page",
   components: {
-    signupFormContent,
+    // signupFormContent,
   },
 };
 </script>

@@ -21,14 +21,17 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="nav navbar-nav">
           <!-- <li class="nav-item active"> -->
           <li class="nav-item">
+            <!-- <a class="nav-link" v-on:click="LoadDownloadPage()" id="navtext"
+              >Download
+            </a> -->
             <a class="nav-link" v-on:click="LoadDownloadPage()" id="navtext"
               >Download
             </a>
-            <!-- <span class="sr-only">(current)</span> -->
           </li>
+          <!-- <span class="sr-only">(current)</span> -->
           <li class="nav-item">
             <a class="nav-link" href="#" id="navtext">Nitro</a>
           </li>
@@ -47,9 +50,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#" id="navtext">Careers</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <div class="nav-link">{{ user_name }}님</div>
-          </li>
+          </li> -->
           <!-- <img src = "@/assets/image1.jpg" /> -->
           <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +84,6 @@
         style="background-color: #ffffff; border-radius: 20px"
         v-show="KeyChecked"
       >
-        <!-- <router-link to="/">Login</router-link><router-view /> -->
         Logout
       </button>
       <button
@@ -90,7 +92,6 @@
         v-on:click="login()"
         style="background-color: #ffffff; border-radius: 20px"
       >
-        <!-- <router-link to="/">Login</router-link><router-view /> -->
         Login
       </button>
       <button
@@ -99,7 +100,6 @@
         v-on:click="signUp()"
         style="background-color: #ffffff; border-radius: 20px"
       >
-        <!-- <router-link to="/">Login</router-link><router-view /> -->
         회원가입
       </button>
       <button
@@ -109,9 +109,16 @@
         style="background-color: #ffffff; border-radius: 20px"
         v-show="KeyChecked"
       >
-        <!-- <router-link to="/">Login</router-link><router-view /> -->
         관리자
       </button>
+      <a
+        href="/test_page"
+        type="button"
+        class="btn"
+        style="background-color: #ffffff; border-radius: 20px"
+      >
+        테스트
+      </a>
     </nav>
     <br />
     <br />
@@ -160,12 +167,12 @@ export default {
     };
   },
   mounted() {
-    this.KeyChecked = this.$cookies.isKey("USER");
-    if (this.$cookies.isKey("USER") === true) {
-      const user = this.$cookies.get("USER"); //eslint-disable-line no-unused-vars
+    this.KeyChecked = this.$cookies.isKey("auth");
+    if (this.$cookies.isKey("auth") === true) {
+      const user = this.$cookies.get("auth"); //eslint-disable-line no-unused-vars
       this.user_name = user.username;
 
-      if (this.$cookies.get("USER") == "SYSTEM_ADMIN") {
+      if (this.$cookies.get("auth") == "SYSTEM_ADMIN") {
         this.SYSTEMChecked = true;
       }
     }
@@ -203,9 +210,9 @@ export default {
             console.log("Logout Success");
 
             //쿠키 삭제
-            this.$cookies.remove("USER");
+            this.$cookies.remove("auth");
             //로그아웃 확인 경고창
-            if (this.$cookies.isKey("USER") === false) {
+            if (this.$cookies.isKey("auth") === false) {
               alert("Logout Success");
             }
             //홈화면으로 전환

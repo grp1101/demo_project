@@ -1,7 +1,7 @@
 <template>
   <div class="signupForm_content_background">
+    <div class="text-center"><h3>계정 만들기</h3></div>
     <div id="signupForm_content_detail_style">
-      <h3>계정 만들기</h3>
       <form>
         <!-- Email input -->
         <div class="form-outline mb-4">
@@ -50,9 +50,11 @@
           class="btn btn-primary btn-block mb-4"
           v-on:click="sign_up_input()"
         >
-          sign_up
+          계속하기
         </button>
       </form>
+
+      <p><a href="/login_page_content">이미 계정이 있으신가요?</a></p>
     </div>
   </div>
 </template>
@@ -125,13 +127,13 @@ export default {
   width: 30%;
   margin-left: 35%;
   padding-top: 2%;
-  height: 70%;
+  height: 80%;
   font-size: 15px;
   color: #7e8f93;
   /* align-items: center; */
 }
 #signupForm_content_detail_style {
-  width: 300px;
+  width: 400px;
   margin-left: 5%;
   margin-right: 5%;
   float: left;

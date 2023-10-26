@@ -50,25 +50,6 @@
           <input type="password" v-model="password" class="form-control" />
         </div>
 
-        <!-- 2 column grid layout for inline styling -->
-        <!-- Checkbox 및 입력한 값 임시 저장-->
-        <!-- <div class="row mb-4">
-          <div class="col d-flex justify-content-center">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="form2Example31"
-                checked
-              />
-              <label class="form-check-label" for="form2Example31">
-                Remember me
-              </label>
-            </div>
-          </div>
-        </div> -->
-
         <div class="col">
           <!-- Simple link -->
           <a href="#!">비밀번호를 잊으셨나요?</a>
@@ -85,7 +66,7 @@
 
         <!-- Register buttons -->
         <div class="text-center">
-          <p>계정이 필요한가요? <a href="#!">가입하기</a></p>
+          <p>계정이 필요한가요? <a href="/signup_page_content">가입하기</a></p>
           <!-- <p>or sign up with:</p> -->
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
@@ -103,13 +84,6 @@
             <i class="fab fa-github"></i>
           </button>
         </div>
-
-        <!-- <qr-code text="login"></qr-code>  -->
-        <!-- 텍스트를 url로 만드는 QR임... -->
-        <!-- https://yoyostudy.tistory.com/53 -->
-        <!-- <input placeholder="접속 URL 입력" v-model="site" v-on:focusin="value = ''">
-        <div class="btn" v-on:click="value = 'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl='+site+'&choe=UTF-8'">생성</div>
-        <img :src="value" v-if="this.value.length > 1"> -->
       </form>
     </div>
 
@@ -141,6 +115,9 @@ export default {
     };
   },
   components: {},
+  mounted() {
+    console.log("loginForm-content mounted 실행됨");
+  },
   methods: {
     async login(email, password) {
       //formData형태로 시큐리티에 파라미터 넘기기
@@ -165,16 +142,16 @@ export default {
           if (response.data.email != null) {
             console.log("/api/login 로그인 성공");
 
-            // this.$cookies.set("USER", response.data);
-            console.log("cookie 생성여부 : ", this.$cookies.isKey("USER"));
-            console.log("cookie 내용 : ", this.$cookies.get("USER"));
+            // this.$cookies.set("auth", response.data);
+            console.log("cookie 생성여부 : ", this.$cookies.isKey("auth"));
+            console.log("cookie 내용 : ", this.$cookies.get("auth"));
 
-            if (this.$cookies.isKey("USER") === true) {
-              this.$cookies.set("USER", "9876"); //백엔드 쿠키값을 변경
+            if (this.$cookies.isKey("auth") === true) {
+              this.$cookies.set("auth", "9876"); //백엔드 쿠키값을 변경
             }
 
             //변경된 쿠키 value
-            console.log("변경된 cookie 내용 : ", this.$cookies.get("USER"));
+            console.log("변경된 cookie 내용 : ", this.$cookies.get("auth"));
 
             alert("Login Success");
             this.$router.push("/");
@@ -191,8 +168,8 @@ export default {
 </script>
 
 <style>
+/* https://hianna.tistory.com/675 가운데로 보내는 방법 */
 .loginForm_content_background {
-  /* https://hianna.tistory.com/675 가운데로 보내는 방법 */
   background-color: #33393a;
   width: 60%;
   height: 70%;
@@ -206,9 +183,6 @@ export default {
   margin-left: 5%;
   margin-right: 5%;
   float: left;
-}
-#QR_style {
-  /* margin: 10%; */
 }
 h3 {
   color: white;
