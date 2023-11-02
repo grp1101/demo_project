@@ -34,56 +34,52 @@
 
     <!-- 나중에 밑에 코드로 바꾸기 -->
     <div id="loginForm_content_detail_style">
-      <h3>돌아오신 것을 환영해요!</h3>
-      <p>다시 만나다니 너무 반가워요!</p>
+      <div class="text-center">
+        <h4>돌아오신 것을 환영해요!</h4>
+        <p>다시 만나다니 너무 반가워요!</p>
+      </div>
 
-      <form>
+      <form class="row g-3">
         <!-- Email input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="email">이메일</label>
-          <input type="email" v-model="email" class="form-control" />
+        <div class="mb-0">
+          <label class="form-label" for="text" style="font-size: 13px"
+            >이메일 또는 전화번호</label
+          >
+          <input
+            type="text"
+            v-model="email"
+            class="form-control bg-dark text-secondary border-0 rounded"
+            required
+          />
         </div>
-
         <!-- Password input -->
-        <div class="form-outline mb-4">
-          <label class="form-label" for="password">비밀번호</label>
-          <input type="password" v-model="password" class="form-control" />
-        </div>
-
-        <div class="col">
-          <!-- Simple link -->
-          <a href="#!">비밀번호를 잊으셨나요?</a>
+        <div class="mb-0">
+          <label class="form-label" for="password" style="font-size: 13px"
+            >비밀번호</label
+          >
+          <input
+            type="password"
+            v-model="password"
+            class="form-control bg-dark text-secondary border-0 rounded"
+            required
+          />
+          <a href="/">비밀번호를 잊으셨나요?</a>
         </div>
 
         <!-- Submit button -->
         <button
           type="button"
-          class="btn btn-primary btn-block mb-4"
+          class="btn btn-primary btn-block mb-4 border-0 rounded"
+          style="background-color: #642efe"
           v-on:click="login(email, password)"
         >
           로그인
         </button>
-
         <!-- Register buttons -->
-        <div class="text-center">
-          <p>계정이 필요한가요? <a href="/signup_page_content">가입하기</a></p>
-          <!-- <p>or sign up with:</p> -->
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-facebook-f"></i>
-          </button>
-
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-google"></i>
-          </button>
-
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-twitter"></i>
-          </button>
-
-          <button type="button" class="btn btn-link btn-floating mx-1">
-            <i class="fab fa-github"></i>
-          </button>
-        </div>
+        <p>
+          계정이 필요한가요?
+          <router-link to="signup_page_content">가입하기</router-link>
+        </p>
       </form>
     </div>
 
@@ -94,7 +90,7 @@
             'https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=http://naver.com&choe=UTF-8')
         "
       />
-      <h3>QR코드로 로그인</h3>
+      <h4>QR코드로 로그인</h4>
       <p>DISCORD 모바일앱으로 스캔해 바로 로그인하세요.</p>
     </div>
   </div>
@@ -171,20 +167,36 @@ export default {
 /* https://hianna.tistory.com/675 가운데로 보내는 방법 */
 .loginForm_content_background {
   background-color: #33393a;
-  width: 60%;
-  height: 70%;
-  margin-left: 20%;
+  width: 50%;
+  height: 55%;
+  margin-left: 25%;
   padding-top: 2%;
   font-size: 15px;
   color: #7e8f93;
 }
 #loginForm_content_detail_style {
-  width: 300px;
+  width: 420px;
   margin-left: 5%;
   margin-right: 5%;
   float: left;
 }
-h3 {
+h4 {
   color: white;
+  font-weight: bold;
+}
+#header {
+  align-items: center;
+}
+input {
+  background-color: black;
+}
+#QR_style {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+img {
+  width: 180px;
+  height: 180px;
+  margin-top: 50px;
 }
 </style>

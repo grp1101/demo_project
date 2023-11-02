@@ -4,8 +4,6 @@
 
     <!-- <login-form-content></login-form-content> -->
 
-    <router-link to="login_page_content" active-class="true">1</router-link>
-
     <transition name="bounce">
       <router-view> </router-view>
     </transition>
@@ -16,7 +14,9 @@
 export default {
   name: "login-page",
   components: {},
-  watch() {},
+  mounted() {
+    this.$router.push("/login_page_content");
+  },
 };
 </script>
 
