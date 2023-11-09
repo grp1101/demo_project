@@ -5,9 +5,9 @@
     <!-- 회원가입 저장 -->
     <insert id="insertUser" parameterType="UserVo">
         INSERT INTO user
-            (id, username, email, password, address, phone, website, company, reg_date)
+            (email ,  password, username, nickname, birth, address, phone, website, company, advertisment, reg_date )
         VALUES
-            (#{id}, #{username}, #{email}, #{password}, #{address}, #{phone} , #{website}, #{company},current_timestamp)
+            (#{email}, #{password}, #{username}, #{nickname}, #{birth}, #{address}, #{phone} , #{website}, #{company}, #{advertisment}, current_timestamp)
     </insert>
 
 

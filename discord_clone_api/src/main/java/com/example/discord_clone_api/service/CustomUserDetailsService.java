@@ -14,7 +14,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    /**/
+    /**
+     * detailService 커스텀
+     * @param email
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         CustomUserDetails user = userMapper.getUserByEmail(email);

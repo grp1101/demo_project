@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,17 +14,18 @@ import lombok.Setter;
 public class UserVo {
 
     public int user_seq;
-    public String id;
-    public String username;
     public String email;
     public String password;
+    public String username;
+    public String nickname;
+    public Date birth;
+    public String authority;
     public String address;
     public String phone;
     public String website;
     public String company;
-    public String authority;
+    public int advertisment;
     public int result;
-
 
     public int getUser_seq() {
         return user_seq;
@@ -30,22 +33,6 @@ public class UserVo {
 
     public void setUser_seq(int user_seq) {
         this.user_seq = user_seq;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
@@ -62,6 +49,38 @@ public class UserVo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 
     public String getAddress() {
@@ -96,12 +115,11 @@ public class UserVo {
         this.company = company;
     }
 
-    public String getAuthority() {
-        return authority;
+    public void setAdvertisment(int advertisment) {
+        this.advertisment = advertisment;
     }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
+    public int getAdvertisment() {
+        return advertisment;
     }
 
     public int getResult() {

@@ -17,6 +17,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BootstrapVue from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+
 //bootstrap-vue 용
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -28,6 +31,8 @@ const vue = createApp(App);
 library.add(faDiscord);
 vue.component('font-awesome-icon', FontAwesomeIcon);
 vue.config.productionTip = false;
+
+vue.component('VueDatePicker', VueDatePicker);
 
 vue.component('qr-code', VueQRCodeComponent);
 

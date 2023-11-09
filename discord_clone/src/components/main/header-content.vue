@@ -94,20 +94,20 @@
       >
         Login
       </button>
-      <button
+      <!-- <button
         type="button"
         class="btn"
         v-on:click="signUp()"
         style="background-color: #ffffff; border-radius: 20px"
       >
         회원가입
-      </button>
+      </button> -->
       <button
         type="button"
         class="btn"
         v-on:click="security()"
         style="background-color: #ffffff; border-radius: 20px"
-        v-show="KeyChecked"
+        v-show="SYSTEMChecked"
       >
         관리자
       </button>

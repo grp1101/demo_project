@@ -18,7 +18,11 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    /*회원가입 저장*/
+    /**
+     * 회원가입 저장
+     * @param userVo
+     * @return
+     */
     public int signup(UserVo userVo) { // 회원 가입
 
         int insertCNT = 0;
@@ -33,22 +37,36 @@ public class UserService {
         return insertCNT;
     }
 
-    /*password 암호화*/
+    /**
+     * 패스워드 암호화
+     * @return
+     */
     public PasswordEncoder passwordEncoder() {
         return this.passwordEncoder;
     };
 
-    /*개인정보 가져오기*/
+    /**
+     * email의 회원정보 가져오기
+     * @param email
+     * @return
+     */
     public CustomUserDetails getUserByEmail(String email) {
         return userMapper.getUserByEmail(email);
     }
 
-    /*User 테이블 가져오기*/
+    /**
+     * user테이블 조회
+     * @return
+     */
     public List<UserVo> getUserList() {
         return userMapper.getUserList();
     }
 
-    /*토큰에 저장된 객체 인증값으로 유저 정보 가져오기*/
+    /**
+     * 토큰에 저장된 객체 인증값으로 유저 정보 가져오기
+     * @param email
+     * @return
+     */
     public UserVo getUserByEmailInUservo(String email) {
         return userMapper.getUserByEmailInUservo(email);
     }

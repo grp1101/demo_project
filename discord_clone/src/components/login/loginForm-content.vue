@@ -142,9 +142,9 @@ export default {
             console.log("cookie 생성여부 : ", this.$cookies.isKey("auth"));
             console.log("cookie 내용 : ", this.$cookies.get("auth"));
 
-            if (this.$cookies.isKey("auth") === true) {
-              this.$cookies.set("auth", "9876"); //백엔드 쿠키값을 변경
-            }
+            // if (this.$cookies.isKey("auth") === true) {
+            //   this.$cookies.set("auth", "9876"); //백엔드 쿠키값을 변경
+            // }
 
             //변경된 쿠키 value
             console.log("변경된 cookie 내용 : ", this.$cookies.get("auth"));

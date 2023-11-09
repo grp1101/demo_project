@@ -69,7 +69,7 @@ public class SecurityConfig {
 //                    }
 //                }); // 로그아웃 성공 핸들러
 //                .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
-        http.rememberMe();//쿠키 생성하는 명령어 https://ugo04.tistory.com/166
+//        http.rememberMe();//쿠키 생성하는 명령어 https://ugo04.tistory.com/166
 
         return http.build();
     }

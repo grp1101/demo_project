@@ -22,7 +22,11 @@ public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    /*홈화면 요청 (defaultSuccessUrl으로 인해 토큰 저장 후, 이 요청으로 넘아는 것 같음*/
+    /**
+     * 로그인 (defaultSuccessUrl으로 인해 토큰 저장 후, 이 요청으로 넘아는 것 같음
+     * @param response
+     * @return
+     */
     @PostMapping ("/")
     public UserVo POSThome(HttpServletResponse response) { // 인증된 사용자의 정보를 보여줌
         logger.info("/api/ 시작");
@@ -39,7 +43,7 @@ public class UserController {
             userVo.setPassword(""); // password는 보이지 않도록 null로 설정
 
             //cookie 생성
-            Cookie cookie = new Cookie("auth", userVo.getAuthority() );
+            Cookie cookie = new Cookie("auth", userVo.authority );
             cookie.setMaxAge(60 * 60); // 쿠키의 유효기간이 한시간
             cookie.setPath("/");
             response.addCookie(cookie);
@@ -51,7 +55,10 @@ public class UserController {
         return userVo;
     }
 
-    /*회원가입 저장*/
+    /**
+     * 로그아웃
+     * @return
+     */
     @GetMapping("/logout")
     public Boolean logout() { // 로그 아웃
 
@@ -70,7 +77,11 @@ public class UserController {
         return result;
     }
 
-    /*회원가입 저장*/
+    /**
+     * 회원가입 저장
+     * @param userVo
+     * @return
+     */
     @PostMapping("/signup")
     public UserVo signup(@RequestBody UserVo userVo) { // 회원 가입
 
@@ -96,17 +107,6 @@ public class UserController {
 
         return userVo;
     }
-
-//    @GetMapping("/")
-//    public String home(Model model) { // 인증된 사용자의 정보를 보여줌
-//        Long id = (Long) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        // token에 저장되어 있는 인증된 사용자의 id 값
-//
-//        UserVo userVo = userService.getUserById(id);
-//        userVo.setPassword(null); // password는 보이지 않도록 null로 설정
-//        model.addAttribute("user", userVo);
-//        return "home";
-//    }
 
 
 }

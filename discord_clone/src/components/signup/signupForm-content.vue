@@ -6,7 +6,7 @@
         <!-- Email input -->
         <div class="mb-0">
           <label class="form-label" for="email" style="font-size: 13px"
-            >email</label
+            >이메일*</label
           >
           <input
             type="text"
@@ -14,10 +14,21 @@
             class="form-control bg-dark text-secondary border-0 rounded"
           />
         </div>
+        <!-- nickname input -->
+        <div class="mb-0">
+          <label class="form-label" for="id" style="font-size: 13px"
+            >별명</label
+          >
+          <input
+            type="text"
+            v-model="nickname"
+            class="form-control bg-dark text-secondary border-0 rounded"
+          />
+        </div>
         <!-- username input -->
         <div class="mb-0">
           <label class="form-label" for="username" style="font-size: 13px"
-            >name</label
+            >사용자명*</label
           >
           <input
             type="text"
@@ -25,25 +36,29 @@
             class="form-control bg-dark text-secondary border-0 rounded"
           />
         </div>
-        <!-- id input -->
-        <div class="mb-0">
-          <label class="form-label" for="id" style="font-size: 13px">id</label>
-          <input
-            type="text"
-            v-model="id"
-            class="form-control bg-dark text-secondary border-0 rounded"
-          />
-        </div>
         <!-- Password input -->
         <div class="mb-0">
           <label class="form-label" for="password" style="font-size: 13px"
-            >password</label
+            >비밀번호*</label
           >
           <input
             type="password"
             v-model="password"
             class="form-control bg-dark text-secondary border-0 rounded"
           />
+        </div>
+        <!-- Birth input -->
+        <div class="mb-0">
+          <label class="form-label" for="birth" style="font-size: 13px"
+            >생년월일*</label
+          >
+          <!-- <input
+            data-provide="datepicker"
+            type="date"
+            v-model="birth"
+            class="form-control bg-dark text-secondary border-0 rounded"
+          /> -->
+          <VueDatePicker v-model="birth"></VueDatePicker>
         </div>
         <!-- address input -->
         <!-- <div class="form-outline mb-4">
@@ -104,20 +119,26 @@ export default {
   components: {},
   data() {
     return {
-      id: "",
-      username: "",
       email: "",
+      username: "",
+      nickname: "",
       password: "",
+      birth: "",
       address: "",
       phone: "",
       website: "",
       company: "",
-      news_checkbox: false,
+      advertisment: false,
     };
   },
   methods: {
     sign_up_input() {
-      if (this.username == "" || this.email == "" || this.password == "") {
+      if (
+        this.email == "" ||
+        this.username == "" ||
+        this.password == "" ||
+        this.birth == ""
+      ) {
         alert("필수항목을 입력하세요");
         return;
       }
@@ -128,14 +149,16 @@ export default {
           method: "post",
           url: "/api/signup",
           data: {
-            id: this.id,
-            username: this.username,
             email: this.email,
+            username: this.username,
+            nickname: this.nickname,
             password: this.password,
+            birth: this.birth,
             address: this.address,
             phone: this.phone,
             website: this.website,
             company: this.company,
+            advertisment: this.advertisment == true ? 1 : 0,
           },
         },
         { withCredentials: true }
@@ -146,7 +169,7 @@ export default {
           //api_ver1
           if (response.data.result == 1) {
             alert(response.data.username + "님 회원가입에 성공하셨습니다.");
-            this.$router.push("/login_page");
+            this.$router.push("/login_page_content");
           } else {
             alert("회원가입에 실패하셨습니다.");
           }
@@ -167,7 +190,7 @@ export default {
   width: 31%;
   margin-left: 35%;
   padding-top: 2%;
-  height: 80%;
+  height: 85%;
   font-size: 15px;
   color: #7e8f93;
   /* align-items: center; */
