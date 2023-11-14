@@ -18,7 +18,11 @@ import BootstrapVue from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import VueDatePicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css'
+import '@vuepic/vue-datepicker/dist/main.css';
+
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+import { AgGridVue } from "ag-grid-vue3";
 
 //bootstrap-vue 용
 // import 'bootstrap/dist/css/bootstrap.min.css';
@@ -62,6 +66,10 @@ const store = new Vuex.Store({
 // import { useRouter } from "vue-router";
 // const router1 = useRouter();
 // vue.config.globalProperties.$router1 = router1;
+
+//그리드
+vue.component('AgGridVue', AgGridVue);
+// vue.use(AgGridVue);
 
 //axios 전역 설정
 vue.config.globalProperties.axios   = axios;
