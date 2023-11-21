@@ -37,7 +37,7 @@ public class SecurityConfig {
 //                .antMatchers("/**").permitAll()// 페이지 접근 권한 허용
                 .antMatchers("/api/**").permitAll()
 //                .antMatchers("/access/**").authenticated() //인증된 사람만
-                .antMatchers("/access/**").hasAuthority("USER") //권한이 USER인 사람만
+                .antMatchers("/access/**" , "/system").hasAuthority("USER") //권한이 USER인 사람만
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable() // 회원가입 요청 시 CORS 에러

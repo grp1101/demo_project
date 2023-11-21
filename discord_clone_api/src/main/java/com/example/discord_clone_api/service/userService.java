@@ -70,4 +70,14 @@ public class UserService {
     public UserVo getUserByEmailInUservo(String email) {
         return userMapper.getUserByEmailInUservo(email);
     }
+
+    /**
+     * user
+     *
+     * @param email
+     * @return
+     */
+    public int UpdateUser(UserVo user) {
+        return userMapper.UpdateUser(user);
+    }
 }

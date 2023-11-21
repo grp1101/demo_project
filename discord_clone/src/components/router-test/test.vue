@@ -6,14 +6,23 @@
     <br />
     <br />
     <br />
+    <button
+      type="button"
+      class="btn"
+      v-on:click="loadUserList()"
+      style="background-color: #ffffff; border-radius: 20px"
+    >
+      검색
+    </button>
     <h1>Test_Grid</h1>
     <AgGridVue
-      style="width: 500px; height: 500px"
-      class="ag-theme-apline-dark"
+      style="width: 100%; height: 300px"
+      class="ag-theme-apline"
       :columnDefs="columnDefs"
       @grid-ready="onGridReady"
       :rowData="rowData"
       :defaultColDef="defaultColDef"
+      :onCellValueChanged="onCellValueChanged"
     >
     </AgGridVue>
   </div>
@@ -22,58 +31,135 @@
 <script>
 import { ref, onBeforeMount } from "vue";
 
+// specify the data
+let UserList = [
+  { user_seq: "Toyota", email: "Celica", password: 35000 },
+  { user_seq: "Porsche", email: "Boxster", password: 72000 },
+  { user_seq: "Aston Martin", email: "DBX", password: 190000 },
+];
+
 export default {
   name: "test-page",
   data() {
     return {};
   },
   components: {},
-  setup(props) {
+  setup() {
     //https://velog.io/@skyepodium/vue-ref-%EC%86%8D%EC%84%B1-feat.-%EC%A3%BC%EC%9D%98%ED%95%A0-%EC%A0%90
     //ref : DOM 접근하기 위한 속성
-    this.columnDefs = ref([
-      { field: "make" },
-      { field: "model" },
-      { field: "price" },
+    const columnDefs = ref([
+      { field: "user_seq", editable: false },
+      { field: "authority", editable: true },
+      { field: "email", editable: false },
+      { field: "username", editable: false },
+      { field: "nickname", editable: false },
+      { field: "birth", editable: false },
+      { field: "address", editable: false },
+      { field: "phone", editable: false },
+      { field: "website", editable: false },
+      { field: "company", editable: false },
+      { field: "advertisment", editable: false },
+      { field: "reg_date", editable: false },
     ]);
-
-    this.rowData = ref([
-      { make: "Toyota", model: "Celica", price: 35000 },
-      { make: "Ford", model: "Mondeo", price: 32000 },
-      { make: "Porsche", model: "Boxter", price: 72000 },
-    ]);
-
     const gridApi = ref();
     const gridColumnApi = ref();
     const defaultColDef = ref({
-      editable: true,
-      cellDataType: false,
+      // editable: true,
+      // cellDataType: false,
     });
-
     const rowData = ref(null);
+    const rowSelection = ref(null);
 
-    onBeforeMount(() => {});
+    onBeforeMount(() => {
+      rowData.value = UserList;
+    });
 
     const onGridReady = (params) => {
       gridApi.value = params.api;
       gridColumnApi.value = params.columnApi;
 
-      const updateData = (data) => params.api.setRowData(data);
+      // const updateData = (data) => params.api.setRowData(data);
 
-      fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
-        .then((resp) => resp.json())
-        .then((data) => updateData(data));
+      // fetch("https://www.ag-grid.com/example-assets/olympic-winners.json")
+      //   .then((resp) => resp.json())
+      //   .then((data) => updateData(data));
+    };
+
+    //setup안에 method를 쓸 수 없음
+    // const onCellValueChanged = () => {
+    //   this.UpdateUserAuth();
+    // };
+
+    const onCellValueChanged = async () => {
+      await this.axios(
+        {
+          method: "post",
+          url: "/system/UpdateUserAuth",
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+        })
+        .finally(() => {
+          console.log("/system/UpdateUserAuth 실행");
+        });
     };
 
     return {
       columnDefs,
       gridApi,
       gridColumnApi,
-      defaultColDef,
       rowData,
+      rowSelection,
+      defaultColDef,
       onGridReady,
+      onCellValueChanged,
     };
   },
   beforeMount() {},
+  created() {},
+  watch: {
+    // UserList(beforeValue, afterValue) {
+    //   console.log("beforeValue : ", beforeValue);
+    //   console.log("afterValue : ", afterValue);
+    // },
+  },
+  methods: {
+    loadUserList() {
+      this.axios(
+        {
+          method: "post",
+          url: "/system/selectUserList",
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+          UserList = response.data;
+          console.log("UserList = ", UserList);
+
+          this.gridApi.setRowData(UserList);
+        })
+        .finally(() => {
+          console.log("/system/selectUserList 실행");
+        });
+    },
+    UpdateUserAuth() {
+      this.axios(
+        {
+          method: "post",
+          url: "/system/UpdateUserAuth",
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+        })
+        .finally(() => {
+          console.log("/system/UpdateUserAuth 실행");
+        });
+    },
+  },
 };
 </script>

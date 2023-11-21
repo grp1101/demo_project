@@ -31,7 +31,7 @@ spring:
   #      prefix: /WEB-INF/jsp/                                   # View Resolver setting
   #      suffix: .jsp
   datasource:
-    url: jdbc:mariadb://125.133.48.203:52099/userdb
+    url: jdbc:mariadb://rpns.iptime.org:52099/userdb
     username: heatmaster
     password: rpn123!!
     hikari:

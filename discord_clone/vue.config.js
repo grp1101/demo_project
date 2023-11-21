@@ -21,6 +21,11 @@ module.exports =defineConfig({
                 target: "http://localhost:8088",
                 changeOrigin:true,
                 ws:false,
+            },
+                        '^/system': { 
+                target: "http://localhost:8088",
+                changeOrigin:true,
+                ws:false,
             }
         }
     },

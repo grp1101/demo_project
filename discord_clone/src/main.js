@@ -67,7 +67,7 @@ const store = new Vuex.Store({
 // const router1 = useRouter();
 // vue.config.globalProperties.$router1 = router1;
 
-//그리드
+//ag그리드
 vue.component('AgGridVue', AgGridVue);
 // vue.use(AgGridVue);
 

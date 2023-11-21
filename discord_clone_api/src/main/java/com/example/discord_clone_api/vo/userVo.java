@@ -24,6 +24,7 @@ public class UserVo {
     public String phone;
     public String website;
     public String company;
+    public Date reg_date;
     public int advertisment;
     public int result;
 
@@ -128,5 +129,13 @@ public class UserVo {
 
     public void setResult(int result) {
         this.result = result;
+    }
+
+    public Date getReg_date() {
+        return reg_date;
+    }
+
+    public void setReg_date(Date reg_date) {
+        this.reg_date = reg_date;
     }
 }
