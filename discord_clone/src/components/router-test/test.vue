@@ -22,7 +22,7 @@
       @grid-ready="onGridReady"
       :rowData="rowData"
       :defaultColDef="defaultColDef"
-      :onCellValueChanged="onCellValueChanged"
+      @row-selected="onRowSelected"
     >
     </AgGridVue>
   </div>
@@ -30,6 +30,7 @@
 
 <script>
 import { ref, onBeforeMount } from "vue";
+// import axios from "axios";
 
 // specify the data
 let UserList = [
@@ -85,25 +86,40 @@ export default {
       //   .then((data) => updateData(data));
     };
 
-    //setup안에 method를 쓸 수 없음
-    // const onCellValueChanged = () => {
-    //   this.UpdateUserAuth();
+    // const onSelectionChanged = () => {
+    //   const selectedRows = gridApi.value.getSelectedRows();
+    //   console.log(selectedRows);
+    //   document.querySelector("#selectedRows").innerHTML =
+    //     selectedRows.length === 1 ? selectedRows[0].athlete : "";
     // };
 
-    const onCellValueChanged = async () => {
-      await this.axios(
-        {
-          method: "post",
-          url: "/system/UpdateUserAuth",
-        },
-        { withCredentials: true }
-      )
-        .then((response) => {
-          console.log("response.data = ", response.data);
-        })
-        .finally(() => {
-          console.log("/system/UpdateUserAuth 실행");
-        });
+    // const onCellValueChanged = async () => {
+    //   const selectedRows = gridApi.value.getSelectedRows();
+    //   console.log(selectedRows);
+
+    //   await axios(
+    //     {
+    //       method: "post",
+    //       url: "/system/UpdateUserAuth",
+    //     },
+    //     { withCredentials: true }
+    //   )
+    //     .then((response) => {
+    //       console.log("response.data = ", response.data);
+    //     })
+    //     .finally(() => {
+    //       console.log("/system/UpdateUserAuth 실행");
+    //     });
+    // };
+
+    //https://codesandbox.io/p/sandbox/sharp-meadow-h3k5m4?file=%2Fmain.js%3A53%2C17
+    const onRowSelected = (event) => {
+      window.alert(
+        "row " +
+          event.node.data.athlete +
+          " selected = " +
+          event.node.isSelected()
+      );
     };
 
     return {
@@ -114,7 +130,7 @@ export default {
       rowSelection,
       defaultColDef,
       onGridReady,
-      onCellValueChanged,
+      onRowSelected,
     };
   },
   beforeMount() {},
