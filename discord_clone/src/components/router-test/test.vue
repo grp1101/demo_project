@@ -17,12 +17,14 @@
     <h1>Test_Grid</h1>
     <AgGridVue
       style="width: 100%; height: 300px"
-      class="ag-theme-apline"
+      class="ag-theme-alpine"
       :columnDefs="columnDefs"
       @grid-ready="onGridReady"
-      :rowData="rowData"
       :defaultColDef="defaultColDef"
+      :rowSelection="rowSelection"
+      :rowData="rowData"
       @row-selected="onRowSelected"
+      :onCellValueChanged="onCellValueChanged"
     >
     </AgGridVue>
   </div>
@@ -30,7 +32,7 @@
 
 <script>
 import { ref, onBeforeMount } from "vue";
-// import axios from "axios";
+import axios from "axios";
 
 // specify the data
 let UserList = [
@@ -73,6 +75,7 @@ export default {
 
     onBeforeMount(() => {
       rowData.value = UserList;
+      rowSelection.value = "multiple";
     });
 
     const onGridReady = (params) => {
@@ -93,44 +96,47 @@ export default {
     //     selectedRows.length === 1 ? selectedRows[0].athlete : "";
     // };
 
-    // const onCellValueChanged = async () => {
-    //   const selectedRows = gridApi.value.getSelectedRows();
-    //   console.log(selectedRows);
+    const onCellValueChanged = async () => {
+      const selectedRows = gridApi.value.getSelectedRows();
+      console.log(selectedRows);
 
-    //   await axios(
-    //     {
-    //       method: "post",
-    //       url: "/system/UpdateUserAuth",
-    //     },
-    //     { withCredentials: true }
-    //   )
-    //     .then((response) => {
-    //       console.log("response.data = ", response.data);
-    //     })
-    //     .finally(() => {
-    //       console.log("/system/UpdateUserAuth 실행");
-    //     });
-    // };
+      await axios(
+        {
+          method: "post",
+          url: "/system/UpdateUserAuth",
+          data: selectedRows[0],
+        },
+        { withCredentials: true }
+      )
+        .then((response) => {
+          console.log("response.data = ", response.data);
+        })
+        .finally(() => {
+          console.log("/system/UpdateUserAuth 실행");
+        });
+    };
 
     //https://codesandbox.io/p/sandbox/sharp-meadow-h3k5m4?file=%2Fmain.js%3A53%2C17
     const onRowSelected = (event) => {
-      window.alert(
-        "row " +
-          event.node.data.athlete +
-          " selected = " +
-          event.node.isSelected()
-      );
+      // window.alert(
+      //   "row " +
+      //     event.node.data.athlete +
+      //     " selected = " +
+      //     event.node.isSelected()
+      // );
+      console.log(event);
     };
 
     return {
       columnDefs,
       gridApi,
       gridColumnApi,
-      rowData,
-      rowSelection,
       defaultColDef,
+      rowSelection,
+      rowData,
       onGridReady,
       onRowSelected,
+      onCellValueChanged,
     };
   },
   beforeMount() {},
