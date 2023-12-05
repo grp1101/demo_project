@@ -43,7 +43,7 @@ public class SystemController {
      * @return
      */
     @PostMapping ("/UpdateUserAuth")
-    public UserVo UpdateUserAuth(UserVo user) {
+    public UserVo UpdateUserAuth(@RequestBody UserVo user) {
         logger.info("/UpdateUserAuth 시작");
 
         int UpdateUserCnt= userService.UpdateUser(user);
