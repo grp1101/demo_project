@@ -42,6 +42,13 @@ name: "download",
 component: () => import("../components/nav/download-page.vue"),
 },
 
+//유저 권한
+{
+path: "/manage_page",
+name: "user",
+component: () => import("../components/nav/manage-page.vue"),
+},
+
 //라우터 테스트
 {
 path: "/test_page",

@@ -105,6 +105,18 @@ export default {
           method: "post",
           url: "/system/UpdateUserAuth",
           data: selectedRows[0],
+          // data: {
+          //   email: selectedRows[0].email,
+          //   username: selectedRows[0].username,
+          //   nickname: selectedRows[0].nickname,
+          //   password: selectedRows[0].password,
+          //   birth: selectedRows[0].birth,
+          //   address: selectedRows[0].address,
+          //   phone: selectedRows[0].phone,
+          //   website: selectedRows[0].website,
+          //   company: selectedRows[0].company,
+          //   advertisment: selectedRows[0].advertisment == null ? 1 : 0,
+          // },
         },
         { withCredentials: true }
       )
