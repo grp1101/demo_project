@@ -1,8 +1,5 @@
 <template>
   <div class="header_background">
-    <!-- <font-awesome-icon :icon="['fab', 'discord']" />
-    <div>test</div> -->
-    <!-- <i class="fa-brands fa-discord"></i> -->
     <nav class="navbar navbar-expand-lg">
       <a class="navbar-brand" href="#" id="navtext">
         <font-awesome-icon icon="fa-brands fa-discord" />
@@ -22,16 +19,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav">
-          <!-- <li class="nav-item active"> -->
           <li class="nav-item">
-            <!-- <a class="nav-link" v-on:click="LoadDownloadPage()" id="navtext"
-              >Download
-            </a> -->
             <a class="nav-link" v-on:click="LoadDownloadPage()" id="navtext"
               >Download
             </a>
           </li>
-          <!-- <span class="sr-only">(current)</span> -->
           <li class="nav-item">
             <a class="nav-link" href="#" id="navtext">Nitro</a>
           </li>
@@ -50,32 +42,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#" id="navtext">Careers</a>
           </li>
-          <!-- <li class="nav-item">
-            <div class="nav-link">{{ user_name }}님</div>
-          </li> -->
-          <!-- <img src = "@/assets/image1.jpg" /> -->
-          <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
-          <!-- <li class="nav-item">
-        <a class="nav-link" href="#">login</a>
-      </li> -->
         </ul>
-        <!-- <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> -->
       </div>
       <button
         type="button"
@@ -119,50 +86,7 @@
       >
         테스트
       </a> -->
-      <a
-        href="/manage_page"
-        type="button"
-        class="btn"
-        style="background-color: #ffffff; border-radius: 20px"
-      >
-        임시 권한 페이지
-      </a>
     </nav>
-
-    <!-- <navContent></navContent> -->
-    <br />
-    <br />
-    <br />
-    <br />
-    <h1 id="maintext">이런 공간이 있다면 어떨까요...</h1>
-    <br />
-    <br />
-    <div id="subtext">
-      ...학교 동아리, 게임 그룹, 세계 예술 감상 커뮤니티에 소속되어 유대감을
-      느낄 수 있는 공간. 소중한 단짝 친구들과 어울릴 수 있는 우리만의 공간. 더
-      쉽게, 매일 어울리고 이야기할 수 있는 그런 공간 말이에요.
-    </div>
-    <br />
-    <br />
-    <button
-      type="button"
-      class="btn"
-      style="background-color: #ffffff; border-radius: 20px; font-size: 20px"
-    >
-      Windows용 다운로드
-    </button>
-    <button
-      type="button"
-      class="btn"
-      style="
-        background-color: #000000;
-        border-radius: 20px;
-        color: white;
-        font-size: 20px;
-      "
-    >
-      웹브라우저에서 Discord 열기
-    </button>
   </div>
 </template>
 
@@ -261,6 +185,7 @@ export default {
           console.log("/access/download_page 실행");
         });
     },
+    security() {},
   },
 };
 </script>
@@ -270,7 +195,7 @@ export default {
   background-color: #5882fa; /*nav의 스타일 때문인지 백그라운드 컬러 적용안됨*/
   color: white;
   background-image: url("@/assets/image1.jpg");
-  height: 500px;
+  height: 10%;
   text-align: center;
 }
 #navtext {
@@ -286,14 +211,5 @@ export default {
   width: 70%;
   margin-left: 15%;
   font-size: 25px;
-}
-
-@font-face {
-  font-family: "Jalnan";
-  src: url("../../assets/font/_Jalnan2TTF.ttf") format("truetype");
-  font-weight: 400;
-}
-.header_background {
-  font-family: "Jalnan";
 }
 </style>

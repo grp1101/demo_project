@@ -24,6 +24,11 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { AgGridVue } from "ag-grid-vue3";
 
+//컴포넌트 전역 등록
+import navContent from './components/main/nav-content.vue';
+import footerContent from './components/main/footer-content.vue'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+
 //bootstrap-vue 용
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -33,6 +38,7 @@ const vue = createApp(App);
 
 /*아이콘 하나씩 import해서 일일히 add해줘야 함*/
 library.add(faDiscord);
+library.add(faMagnifyingGlass);
 vue.component('font-awesome-icon', FontAwesomeIcon);
 vue.config.productionTip = false;
 
@@ -82,3 +88,6 @@ vue.use(router).mount('#app');
 //https://kyounghwan01.github.io/blog/Vue/vue/vue-cookies/
 vue.use(VueCookies);
 // vue.$cookies.config("5m");
+
+vue.component('navContent', navContent);
+vue.component('footerContent', footerContent);
