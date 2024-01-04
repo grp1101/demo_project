@@ -32,5 +32,5 @@ tab3.친구를 추가할 수 있는 화면
 https://taehyeki.tistory.com/319
 https://javacpro.tistory.com/72https://colinch4.github.io/2023-09-15/10-34-44-968633-vuejs%EC%9D%98-%EC%96%91%EB%B0%A9%ED%96%A5-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B0%94%EC%9D%B8%EB%94%A9%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%B1%84%ED%8C%85-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84-%EB%B0%A9%EB%B2%95/
 
-화면설계 URL : https://app.diagrams.net/#G14g-id7bC6Qs2q10L5y_q_zQEpjEsJc6F#%7B%22pageId%22%3A%22_7W-blk_wRMV96Qxu0qD%22%7D
-DB설계 URL : 
+화면설계 URL : https://app.diagrams.net/#G14g-id7bC6Qs2q10L5y_q_zQEpjEsJc6F
+DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
