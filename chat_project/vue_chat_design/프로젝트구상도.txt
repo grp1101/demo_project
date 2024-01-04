@@ -35,3 +35,10 @@ https://javacpro.tistory.com/72https://colinch4.github.io/2023-09-15/10-34-44-96
 
 화면설계 URL : https://app.diagrams.net/#G14g-id7bC6Qs2q10L5y_q_zQEpjEsJc6F
 DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
+
+
+20240104
+1.DB설계 작성
+2.데이터베이스에 DB 생성
+3.vue_chat_server 백엔드 프로젝트 생성
+4.vue_chat_server 프로젝트 로그인 관련 로직 옮기기
