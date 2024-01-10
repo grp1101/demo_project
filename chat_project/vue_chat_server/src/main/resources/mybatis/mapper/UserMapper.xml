@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+    <!-- 개인정보 가져오기 -->
+    <select id="getUserByEmail" resultType="CustomUserDetails">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+    </select>
+
+    <!-- User 테이블 가져오기 -->
+    <select id="getUserList" resultType="map">
+        SELECT nullif(user_seq , '') as user_seq,
+               nullif(email , '') as email,
+               nullif(username , '') as username,
+               nullif(nickname , '') as nickname,
+               nullif(birth , '') as birth,
+               nullif(authority , '') as authority,
+               nullif(address , '') as address,
+               nullif(phone , '') as phone,
+               nullif(website , '') as website,
+               nullif(company , '') as company,
+               nullif(advertisment , 0) as advertisment,
+               nullif(reg_date , '') as reg_date
+        FROM user
+    </select>
+
+    <!-- 토큰에 저장된 객체 인증값으로 유저 정보 가져오기 -->
+    <select id="getUserByEmailInUservo" resultType="UserVo">
+        SELECT *
+        FROM user
+        WHERE email = #{email}
+    </select>
+
+</mapper>

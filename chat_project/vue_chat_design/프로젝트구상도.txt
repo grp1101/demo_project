@@ -42,3 +42,7 @@ DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
 2.데이터베이스에 DB 생성
 3.vue_chat_server 백엔드 프로젝트 생성
 4.vue_chat_server 프로젝트 로그인 관련 로직 옮기기
+
+202401010
+1.vue_chat_server 프로젝트 로그인 관련 로직 옮기기
+2.로그인 화면 생성
