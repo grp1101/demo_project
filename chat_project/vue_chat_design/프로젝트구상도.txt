@@ -46,3 +46,9 @@ DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
 202401010
 1.vue_chat_server 프로젝트 로그인 관련 로직 옮기기
 2.로그인 화면 생성
+
+20240111
+1.2.로그인 화면 생성
+2.vue_chat 프론트 로그인 관련 로직 옮기기
+3.프록시 설정
+4.vue 버전 변경 (이것저것 지우다가 빌드 오류나서 해결책으로 버전 변경)
