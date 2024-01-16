@@ -1,10 +1,11 @@
 <template>
   <div></div>
 </template>
-
 <script>
 export default {
-  name: "common-footer-page",
-  components: {},
+  name: "friendsList_content",
+  data() {
+    return {};
+  },
 };
 </script>

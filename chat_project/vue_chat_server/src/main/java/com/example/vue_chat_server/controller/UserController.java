@@ -1,8 +1,8 @@
 package com.example.vue_chat_server.controller;
 
 
-import com.example.discord_clone_api.service.UserService;
-import com.example.discord_clone_api.vo.UserVo;
+import com.example.vue_chat_server.service.UserService;
+import com.example.vue_chat_server.vo.UserVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,7 @@
 package com.example.vue_chat_server.security;
 
-import com.example.discord_clone_api.service.UserService;
-import com.example.discord_clone_api.vo.CustomUserDetails;
-import com.example.discord_clone_api.vo.UserVo;
+import com.example.vue_chat_server.service.UserService;
+import com.example.vue_chat_server.vo.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

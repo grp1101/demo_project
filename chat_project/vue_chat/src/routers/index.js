@@ -15,25 +15,37 @@ path: "/login_page",
 name: "login_page",
 component: () => import("../components/content/login_content.vue"),
 },
-// {
-// path: "/login_page2",
-// name: "login",
-// component: () => import("../login-page.vue"),
-// children: [
-// {
-// path: "/signup_page_content",
-// name: "signupcontent",
-// component: () => import("../components/signup/signupForm-content.vue"),
-// meta: { transition: 'slide-left' },
-// },
-// {
-// path: "/login_page_content",
-// name: "logincontent",
-// component: () => import("../components/login/loginForm-content.vue"),
-// meta: { transition: 'slide-left' },
-// },
-// ]
-// },
+{
+path: "/App",
+name: "App",
+component: () => import("../App.vue"),
+children: [
+{
+path: "/friendsList",
+name: "friendsList",
+component: () => import("../components/content/friendsList_content.vue"),
+meta: { transition: 'slide-left' },
+},
+{
+path: "/chatRoom",
+name: "chatRoom",
+component: () => import("../components/content/chatRoom_content.vue"),
+meta: { transition: 'slide-left' },
+},
+{
+path: "/chat",
+name: "chat",
+component: () => import("../components/content/chat_content.vue"),
+meta: { transition: 'slide-left' },
+},
+{
+path: "/setting",
+name: "setting",
+component: () => import("../components/content/setting_content.vue"),
+meta: { transition: 'slide-left' },
+},
+]
+},
 ];
 
 const router = createRouter({

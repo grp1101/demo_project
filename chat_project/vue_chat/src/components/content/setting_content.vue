@@ -1,12 +1,14 @@
 <template>
-  <div class="header_background"></div>
-</template>
+    <div>
 
+    </div>
+</template>
 <script>
 export default {
-  name: "common-header-page",
+  name: "setting_content",
   data() {
     return {};
   },
 };
 </script>
+

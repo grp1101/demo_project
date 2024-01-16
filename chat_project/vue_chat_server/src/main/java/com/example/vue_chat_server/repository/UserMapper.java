@@ -1,7 +1,7 @@
 package com.example.vue_chat_server.repository;
 
-import com.example.discord_clone_api.vo.CustomUserDetails;
-import com.example.discord_clone_api.vo.UserVo;
+import com.example.vue_chat_server.vo.CustomUserDetails;
+import com.example.vue_chat_server.vo.UserVo;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

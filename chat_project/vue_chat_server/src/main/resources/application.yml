@@ -45,7 +45,7 @@ mybatis:
     cache-enabled: true
     call-setters-on-nulls: true
     default-statement-timeout: 500
-  type-aliases-package: com.example.discord_clone_api.vo
+  type-aliases-package: com.example.vue_chat_server.vo
 logging:
   file:
     path: /Users/hong/Logs/kotlin-spring

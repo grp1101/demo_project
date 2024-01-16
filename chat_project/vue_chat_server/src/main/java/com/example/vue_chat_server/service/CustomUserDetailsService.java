@@ -1,7 +1,7 @@
 package com.example.vue_chat_server.service;
 
-import com.example.discord_clone_api.repository.UserMapper;
-import com.example.discord_clone_api.vo.CustomUserDetails;
+import com.example.vue_chat_server.repository.UserMapper;
+import com.example.vue_chat_server.vo.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
