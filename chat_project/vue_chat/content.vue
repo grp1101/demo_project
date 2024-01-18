@@ -1,9 +1,11 @@
 <template>
-  <div><h1>친구목록</h1></div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 <script>
 export default {
-  name: "friendsList_content",
+  name: "content_page",
   data() {
     return {};
   },

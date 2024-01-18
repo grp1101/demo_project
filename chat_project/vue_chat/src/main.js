@@ -14,6 +14,5 @@ vue.use(router);
 //전역설정
 vue.config.globalProperties.axios=axios;
 
-vue.use(SocketPlugin);
 
 vue.mount('#app');

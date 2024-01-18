@@ -16,9 +16,9 @@ name: "login_page",
 component: () => import("../components/content/login_content.vue"),
 },
 {
-path: "/App",
-name: "App",
-component: () => import("../App.vue"),
+path: "/content",
+name: "content",
+component: () => import("../../content.vue"),
 children: [
 {
 path: "/friendsList",
