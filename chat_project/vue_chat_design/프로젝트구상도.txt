@@ -57,3 +57,7 @@ DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
 1.로그인 동작 확인
 2.채팅 화면 생성
 3.소켓 설치까지만 https://velog.io/@skyepodium/vue-spring-boot-stomp-%EC%9B%B9%EC%86%8C%EC%BC%93
+
+20240118
+1.header , footer 화면 추가
+2.탭 라우터 연결
