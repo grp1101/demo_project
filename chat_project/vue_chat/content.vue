@@ -9,5 +9,8 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.$router.push("/setting");
+  },
 };
 </script>

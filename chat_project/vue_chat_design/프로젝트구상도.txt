@@ -61,3 +61,8 @@ DB설계 URL : https://app.diagrams.net/#G1D1pXrXSGYhzLNPscfP0r7U5OtYVJEqTp
 20240118
 1.header , footer 화면 추가
 2.탭 라우터 연결
+
+20240123
+1.친구목록,대화목록,친구추가 임시 화면 생성
+2.로그아웃 탭 추가
+3.친구추가 화면에서 검색 요청 생성(미완료)

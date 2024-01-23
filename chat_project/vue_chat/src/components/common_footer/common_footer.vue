@@ -40,6 +40,18 @@
           <router-link to="setting">친구설정</router-link>
         </div>
       </li>
+      <li class="nav-item">
+        <div
+          class="nav-link"
+          id="four-tab"
+          data-toggle="tab"
+          role="tab"
+          aria-controls="Four"
+          aria-selected="false"
+        >
+          <router-link to="setting">로그아웃</router-link>
+        </div>
+      </li>
     </ul>
   </footer>
 </template>

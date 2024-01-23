@@ -77,5 +77,30 @@ public class UserController {
         return result;
     }
 
+    /**
+     * 친구추가 조회
+     * @param response
+     * @return
+     */
+    @PostMapping ("/setting/search")
+    public UserVo setting_contetn_search(HttpServletResponse response) {
+        logger.info("/setting/search 시작");
+
+        UserVo userVo = new UserVo();
+
+        String email = auth.getPrincipal().toString();
+        userVo = userService.getUserByEmailInUservo(email);
+        userVo.setPassword(""); // password는 보이지 않도록 null로 설정
+
+        //cookie 생성
+        Cookie cookie = new Cookie("auth", userVo.authority );
+        cookie.setMaxAge(60 * 60); // 쿠키의 유효기간이 한시간
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        logger.info("/api/ 종료");
+
+        return userVo;
+    }
 
 }
