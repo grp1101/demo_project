@@ -20,8 +20,8 @@ public class UserMapper {
     }
 
     /*User 테이블 가져오기*/
-    public List<UserVo> getUserList(){
-        return session.selectList("UserMapper.getUserList");
+    public List<UserVo> getUserList(UserVo user){
+        return session.selectList("UserMapper.getUserList" , user);
     }
 
     /*토큰에 저장된 객체 인증값으로 유저 정보 가져오기*/

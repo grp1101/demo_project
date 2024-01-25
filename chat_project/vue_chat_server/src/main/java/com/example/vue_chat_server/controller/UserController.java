@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -79,28 +80,45 @@ public class UserController {
 
     /**
      * 친구추가 조회
-     * @param response
+     * @param userVo
      * @return
      */
     @PostMapping ("/setting/search")
-    public UserVo setting_contetn_search(HttpServletResponse response) {
+    public List<UserVo> setting_contetn_search(@RequestBody UserVo userVo) {
         logger.info("/setting/search 시작");
 
-        UserVo userVo = new UserVo();
-
-        String email = auth.getPrincipal().toString();
-        userVo = userService.getUserByEmailInUservo(email);
-        userVo.setPassword(""); // password는 보이지 않도록 null로 설정
+        List<UserVo> userList= userService.getUserList(userVo);
 
         //cookie 생성
-        Cookie cookie = new Cookie("auth", userVo.authority );
-        cookie.setMaxAge(60 * 60); // 쿠키의 유효기간이 한시간
-        cookie.setPath("/");
-        response.addCookie(cookie);
+//        Cookie cookie = new Cookie("auth", userVo.authority );
+//        cookie.setMaxAge(60 * 60); // 쿠키의 유효기간이 한시간
+//        cookie.setPath("/");
+//        response.addCookie(cookie);
 
-        logger.info("/api/ 종료");
+        logger.info("/setting/search 종료");
 
-        return userVo;
+        return userList;
     }
 
+    /**
+     * 친구추가 추가
+     * @param userVo
+     * @return
+     */
+    @PostMapping ("/setting/friend_add")
+    public List<UserVo> setting_content_friend_add(@RequestBody UserVo userVo) {
+        logger.info("/setting/friend_add 시작");
+
+        List<UserVo> userList= userService.getUserList(userVo);
+
+        //cookie 생성
+//        Cookie cookie = new Cookie("auth", userVo.authority );
+//        cookie.setMaxAge(60 * 60); // 쿠키의 유효기간이 한시간
+//        cookie.setPath("/");
+//        response.addCookie(cookie);
+
+        logger.info("/setting/friend_add 종료");
+
+        return userList;
+    }
 }

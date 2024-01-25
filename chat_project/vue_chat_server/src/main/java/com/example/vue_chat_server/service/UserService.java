@@ -40,8 +40,8 @@ public class UserService {
      * user테이블 조회
      * @return
      */
-    public List<UserVo> getUserList() {
-        return userMapper.getUserList();
+    public List<UserVo> getUserList(UserVo user) {
+        return userMapper.getUserList(user);
     }
 
     /**

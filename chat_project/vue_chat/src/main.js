@@ -9,6 +9,7 @@ import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const vue = createApp(App);
@@ -22,6 +23,7 @@ vue.config.globalProperties.axios=axios;
 //font-awosome
 library.add(faDiscord);
 library.add(faMagnifyingGlass);
+library.add(faUserPlus);
 vue.component('font-awesome-icon', FontAwesomeIcon);
 vue.config.productionTip = false;
 
